@@ -1,4 +1,5 @@
-// Feed
+// Feed 
+/*
 $(document).ready(function(){
     $.ajax({
         // Url de la requête
@@ -23,4 +24,11 @@ $(document).ready(function(){
     .always(function(){
         alert("Requête effectuée");
     });   
+});
+*/
+$(document).ready(function(){
+    $.get("https://valorant-api.com/v1/agents", function(response){
+        $("div#VAL-CONTENT-V1").append(response);
+        console.log(response);
+    });
 });
