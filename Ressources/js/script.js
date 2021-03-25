@@ -2,7 +2,7 @@
 $(document).ready(function(){
     $.ajax({
         // Url de la requête
-        url: "https://api.coingecko.com/api/v3/ping",
+        url: "https://eu.api.riotgames.com/val/content/v1/contents?api_key=RGAPI-d9e443f2-a2b2-4390-956f-1a12c262c8e3",
 
         // Méthode d'envoi (type de requête)
         method: "GET",
