@@ -14,8 +14,14 @@ $(document).ready(function(){
 
     .done(function(response){
         console.log(response);
-        let dataReturn = response.data;
-        $("#valAgents").html(dataReturn);
+        for (let agentNum = 0; agentNum < response.data.length; agentNum++){
+            $("#valAgents").append(response.data[agentNum].displayName);
+            let agentIcon = document.createElement("img");
+            agentIcon.src = response.data[agentNum].displayIcon;
+            agentIcon.setAttribute("src", agentIcon.src);            
+            $("#valAgents").append(agentIcon);
+            $("#valAgents").append(response.data[agentNum].description);
+        }        
     })
     
     .fail(function(error){
@@ -27,7 +33,3 @@ $(document).ready(function(){
     });
     */   
 });
-
-function displayName(dataReturn) {
-    dataReturn[0].displayName;
-}
