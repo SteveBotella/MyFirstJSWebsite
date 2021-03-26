@@ -1,5 +1,5 @@
 // Feed 
-/*
+
 $(document).ready(function(){
     $.ajax({
         // Url de la requête
@@ -13,22 +13,21 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-        let data = JSON.stringify(response);
-        $("div#VAL-CONTENT-V1").append(data);
+        console.log(response);
+        let dataReturn = response.data;
+        $("#valAgents").html(dataReturn);
     })
     
     .fail(function(error){
         alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
     })
-    
+    /*
     .always(function(){
         alert("Requête effectuée");
-    });   
-});
-*/
-$(document).ready(function(){
-    $.get("https://valorant-api.com/v1/agents", function(response){
-        $("div#VAL-CONTENT-V1").append(response);
-        console.log(response);
     });
+    */   
 });
+
+function displayName(dataReturn) {
+    dataReturn[0].displayName;
+}
