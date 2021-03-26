@@ -1,3 +1,81 @@
+body {
+    margin: auto;
+}
+
+#navBar {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.90);
+    height: 80px;
+    width: auto;
+}
+
+#riotLogo {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;    
+    margin-left: 25px;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    background-color: rgba(0, 0, 0, 0.1);    
+}
+
+#valorantLogo {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 25px;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    background-color: rgba(0, 0, 0, 0.1);    
+}
+
+#displayAgents {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+}
+
+#displayWeapons {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+}
+
+#displayMaps {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+}
+
 #valAPI {
     margin: 0 auto;    
     width: 1000px; 

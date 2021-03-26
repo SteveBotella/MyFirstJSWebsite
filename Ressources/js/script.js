@@ -175,6 +175,16 @@ $(document).ready(function(){
         )
     });
 
+    // Mouse hovering riotLogo
+    let riotLogo = document.getElementById("riotLogo");
+    riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
+    riotLogo.onmouseout = function() {riotLogo.src = "Ressources/images/riotFistLogo.png";}
+    
+    // Click on valorantLogo
+    $('#valorantLogo').click(function() {
+        window.open('https://playvalorant.com/fr-fr/','_blank');
+    });
+
     onPageLoad();
 
 });
