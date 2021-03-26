@@ -13,14 +13,22 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-        console.log(response);
-        for (let agentNum = 0; agentNum < response.data.length; agentNum++){
-            $("#valAgents").append(response.data[agentNum].displayName);
+        console.log(response)        
+        for (let agentNum = 0; agentNum < response.data.length; agentNum++){ 
+            let agent = new Object();
+            agent = {
+            name: response.data[agentNum].displayName,
+            icon: response.data[agentNum].displayIcon,
+            description: response.data[agentNum].description,
+            id: agentNum,
+        }             
+            console.log(agent); 
+            
+            $("#valAgents").append(agent.name);
             let agentIcon = document.createElement("img");
-            agentIcon.src = response.data[agentNum].displayIcon;
-            agentIcon.setAttribute("src", agentIcon.src);            
+            agentIcon.setAttribute("src", agent.icon);            
             $("#valAgents").append(agentIcon);
-            $("#valAgents").append(response.data[agentNum].description);
+            $("#valAgents").append(agent.description);            
         }        
     })
     
