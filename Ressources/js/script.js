@@ -25,7 +25,7 @@ $(document).ready(function(){
         });
         */   
     }
-
+    // Function to add agent object as a div
     function addAgent(response) {
         for (let agentNum = 0; agentNum < response.data.length; agentNum++){
             // Create new div
@@ -58,6 +58,7 @@ $(document).ready(function(){
         }
     }
 
+    // Function to add weapon object as a div
     function addWeapon(response) {
         for (let agentNum = 0; agentNum < response.data.length; agentNum++){
             // Create new div
@@ -89,6 +90,7 @@ $(document).ready(function(){
         }
     }
 
+    // Function to add map object as a div
     function addMap(response) {
         for (let agentNum = 0; agentNum < response.data.length; agentNum++){
             // Create new div
@@ -120,7 +122,7 @@ $(document).ready(function(){
         }
     }
 
-
+    // Set the request parameters (Can change the API url)
     function onPageLoad() {
         requestApi(
             "https://valorant-api.com/v1/agents",
@@ -130,12 +132,14 @@ $(document).ready(function(){
         );
     }
 
+    // Clear the api div
     function clearChildren() {
         let remove = document.getElementById('valAgents');
         remove.innerHTML = '';   
     }
 
     // --- EVENTS ---
+    // Button display Agents
     $('#displayAgents').click(event => {
         clearChildren();
         requestApi(
@@ -146,6 +150,7 @@ $(document).ready(function(){
         )
     });
 
+    // Button display Weapons
     $('#displayWeapons').click(event => {
         clearChildren();
         requestApi(
@@ -156,6 +161,7 @@ $(document).ready(function(){
         )
     });
 
+    // Button display Maps
     $('#displayMaps').click(event => {
         clearChildren();
         requestApi(
