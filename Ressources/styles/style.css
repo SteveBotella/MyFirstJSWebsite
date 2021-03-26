@@ -2,7 +2,19 @@ body {
     margin: auto;
 }
 
+#headerVideo {
+    height: auto;
+}
+
+video {
+    z-index: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: 100% auto;
+}
+
 #navBar {
+    position: relative;
     display: flex;
     background-color: rgba(0, 0, 0, 0.90);
     height: 80px;
@@ -46,6 +58,11 @@ body {
     font-size: 14px;
     font-family: 'Changa', sans-serif;
     -webkit-text-stroke: 0.5px white;
+    border-bottom: 5px solid transparent;
+}
+
+#displayAgents:hover {
+    border-bottom: 3px solid red;
 }
 
 #displayWeapons {
@@ -62,6 +79,10 @@ body {
     -webkit-text-stroke: 0.5px white;
 }
 
+#displayWeapons:hover {
+    border-bottom: 3px solid red;
+}
+
 #displayMaps {
     display: flex;
     margin-top: auto;
@@ -76,7 +97,11 @@ body {
     -webkit-text-stroke: 0.5px white;
 }
 
-#valAPI {
+#displayMaps:hover {
+    border-bottom: 3px solid red;
+}
+
+#valAPI {    
     margin: 0 auto;    
     width: 1000px; 
 }
