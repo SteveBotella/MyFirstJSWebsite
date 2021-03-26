@@ -79,7 +79,6 @@ $(document).ready(function(){
             // Inside the new created div, append all valAgent informations
             newDiv.append(agent.name);
             newDiv.append(agentIcon);
-            newDiv.append(agent.description);
     
             // Set class & unique id for the new created div
             newDiv.setAttribute("class", "DivAgent");
@@ -106,22 +105,22 @@ $(document).ready(function(){
     }
 
     // --- EVENTS ---
-    $('#displayWeapons').click(event => {
-        clearChildren();
-        requestApi(
-            "https://valorant-api.com/v1/weapons",
-            'GET', 
-            (res) =>  addWeapon(res),
-            (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
-        )
-    });
-
     $('#displayAgents').click(event => {
         clearChildren();
         requestApi(
             "https://valorant-api.com/v1/agents",
             'GET', 
             (res) =>  addAgent(res),
+            (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
+        )
+    });
+
+    $('#displayWeapons').click(event => {
+        clearChildren();
+        requestApi(
+            "https://valorant-api.com/v1/weapons",
+            'GET', 
+            (res) =>  addWeapon(res),
             (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
         )
     });
