@@ -100,8 +100,14 @@ $(document).ready(function(){
         );
     }
 
+    function clearChildren() {
+        let remove = document.getElementById('valAgents');
+        remove.innerHTML = '';   
+    }
+
     // --- EVENTS ---
     $('#displayWeapons').click(event => {
+        clearChildren();
         requestApi(
             "https://valorant-api.com/v1/weapons",
             'GET', 
@@ -111,6 +117,7 @@ $(document).ready(function(){
     });
 
     $('#displayAgents').click(event => {
+        clearChildren();
         requestApi(
             "https://valorant-api.com/v1/agents",
             'GET', 
