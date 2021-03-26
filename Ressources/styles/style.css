@@ -1,4 +1,62 @@
-#valAgents {
-    margin: 0 auto;
+#valAPI {
+    margin: 0 auto;    
     width: 1000px; 
+}
+
+.DivAgent {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+}
+
+.agentTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.DivAgent img {
+    margin: 25px;
+    height: 250px;
+    width: 250px;
+    border-radius: 10px;
+    border-color: rgb(53, 53, 53);
+    border-style: inset;
+    border-width: 5px;
+}
+
+.DivWeapon {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;   
+}
+
+.DivWeapon img {
+    height: 50%;
+    width: 50%;
+}
+
+.DivMap {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+}
+
+.DivMap img {
+    height: 750px;
+    width: 750px;
+    margin: 0 auto;
 }

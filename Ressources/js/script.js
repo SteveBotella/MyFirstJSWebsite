@@ -45,7 +45,10 @@ $(document).ready(function(){
             agentIcon.setAttribute("src", agent.icon);
             
             // Inside the new created div, append all valAgent informations
-            newDiv.append(agent.name);
+            let newTitle = document.createElement("text");
+            newTitle.setAttribute("class", "agentTitle");
+            newTitle.append(agent.name);
+            newDiv.append(newTitle);
             newDiv.append(agentIcon);
             newDiv.append(agent.description);
     
@@ -54,7 +57,7 @@ $(document).ready(function(){
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -82,11 +85,11 @@ $(document).ready(function(){
             newDiv.append(agentIcon);
     
             // Set class & unique id for the new created div
-            newDiv.setAttribute("class", "DivAgent");
+            newDiv.setAttribute("class", "DivWeapon");
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -109,16 +112,16 @@ $(document).ready(function(){
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
             
-            // Inside the new created div, append all valAgent informations
-            newDiv.append(agent.name);
+            // Inside the new created div, append all valAgent informations            
+            newDiv.append(agent.name);            
             newDiv.append(agentIcon);
     
             // Set class & unique id for the new created div
-            newDiv.setAttribute("class", "DivAgent");
+            newDiv.setAttribute("class", "DivMap");
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -134,7 +137,7 @@ $(document).ready(function(){
 
     // Clear the api div
     function clearChildren() {
-        let remove = document.getElementById('valAgents');
+        let remove = document.getElementById('valAPI');
         remove.innerHTML = '';   
     }
 
