@@ -1,5 +1,6 @@
 body {
     margin: auto;
+    background-attachment:fixed;
 }
 
 #headerVideo {
@@ -121,6 +122,15 @@ video {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 60px;
+    font-family: 'Changa', sans-serif;
+}
+
+.agentDescription {
+    background-color: rgba(71, 71, 71, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 5px;
+    font-family: 'Changa', sans-serif;
 }
 
 .DivAgent img {
@@ -143,6 +153,14 @@ video {
     color: white;   
 }
 
+.weaponTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Changa', sans-serif;
+}
+
 .DivWeapon img {
     height: 50%;
     width: 50%;
@@ -156,6 +174,14 @@ video {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.90);
     color: white;
+}
+
+.mapTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Changa', sans-serif;
 }
 
 .DivMap img {
