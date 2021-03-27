@@ -231,6 +231,7 @@ $(document).ready(function(){
         height: 192,
         width: 96,
         jumping: false,
+        walking: false,
         x: 300, // Center of canvas
         x_velocity: 0,
         y: 300,
@@ -249,13 +250,17 @@ $(document).ready(function(){
             playerCharacter.jumping = true;
         }
 
-        if (controller.left == true) {
-            playerCharacter.x_velocity -= 0.5;
+        if (controller.left == true && playerCharacter.walking == false) {
+            playerCharacter.x_velocity -= 4;
+            playerCharacter.y_velocity -= 7;
+            playerCharacter.walking = true;
             characterViper.src = "Ressources/images/characterViperFlip.png";            
         }
 
-        if (controller.right == true) {
-            playerCharacter.x_velocity += 0.5;
+        if (controller.right == true && playerCharacter.walking == false) {
+            playerCharacter.x_velocity += 4;
+            playerCharacter.y_velocity -= 7;
+            playerCharacter.walking = true;
             characterViper.src = "Ressources/images/characterViper.png";
         }
 
@@ -268,15 +273,16 @@ $(document).ready(function(){
         // If playerCharacter is falling below floor line
         if (playerCharacter.y > 400 - 16 - 32) {
             playerCharacter.jumping = false;
+            playerCharacter.walking = false;
             playerCharacter.y = 400 - 16 - 32;
             playerCharacter.y_velocity = 0;
         }
         
         // If playerCharacter is going off the left screen
         if (playerCharacter.x < - 32) {
-            playerCharacter.x = 1080;            
-        } else if (playerCharacter.x > 1080) { // If playerCharacter is going off the right screen
-            playerCharacter.x = - 32;
+            playerCharacter.x = - 32;            
+        } else if (playerCharacter.x > 1000) { // If playerCharacter is going off the right screen
+            playerCharacter.x = 1000;
         }
 
         //context.fillStyle = "#202020";
