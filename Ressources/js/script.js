@@ -45,16 +45,22 @@ $(document).ready(function(){
             agentIcon.setAttribute("src", agent.icon);
             
             // Inside the new created div, append all valAgent informations
-            newDiv.append(agent.name);
+            let newTitle = document.createElement("text");
+            newTitle.setAttribute("class", "agentTitle");
+            newTitle.append(agent.name);
+            newDiv.append(newTitle);
             newDiv.append(agentIcon);
-            newDiv.append(agent.description);
+            let newDescription = document.createElement("text");
+            newDescription.setAttribute("class", "agentDescription");
+            newDescription.append(agent.description);
+            newDiv.append(newDescription);
     
             // Set class & unique id for the new created div
             newDiv.setAttribute("class", "DivAgent");
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -78,15 +84,18 @@ $(document).ready(function(){
             agentIcon.setAttribute("src", agent.icon);
             
             // Inside the new created div, append all valAgent informations
-            newDiv.append(agent.name);
+            let newTitle = document.createElement("text");
+            newTitle.setAttribute("class", "weaponTitle");
+            newTitle.append(agent.name);
+            newDiv.append(newTitle);
             newDiv.append(agentIcon);
     
             // Set class & unique id for the new created div
-            newDiv.setAttribute("class", "DivAgent");
+            newDiv.setAttribute("class", "DivWeapon");
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -110,15 +119,18 @@ $(document).ready(function(){
             agentIcon.setAttribute("src", agent.icon);
             
             // Inside the new created div, append all valAgent informations
-            newDiv.append(agent.name);
+            let newTitle = document.createElement("text");
+            newTitle.setAttribute("class", "agentTitle");
+            newTitle.append(agent.name);
+            newDiv.append(newTitle);           
             newDiv.append(agentIcon);
     
             // Set class & unique id for the new created div
-            newDiv.setAttribute("class", "DivAgent");
+            newDiv.setAttribute("class", "DivMap");
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAgents").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                                   
         }
     }
 
@@ -134,7 +146,7 @@ $(document).ready(function(){
 
     // Clear the api div
     function clearChildren() {
-        let remove = document.getElementById('valAgents');
+        let remove = document.getElementById('valAPI');
         remove.innerHTML = '';   
     }
 
@@ -171,6 +183,21 @@ $(document).ready(function(){
             (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
         )
     });
+
+    // Mouse hovering riotLogo
+    let riotLogo = document.getElementById("riotLogo");
+    riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
+    riotLogo.onmouseout = function() {riotLogo.src = "Ressources/images/riotFistLogo.png";}
+        
+    // Click on valorantLogo
+    $('#valorantLogo').click(function() {
+        window.open('https://playvalorant.com/fr-fr/','_blank');
+    });
+
+    // Mouse hovering valorantLogo
+    let valorantLogo = document.getElementById("valorantLogo");
+    valorantLogo.onmouseover = function() {valorantLogo.src = "Ressources/images/valorantLogoRed.png";}
+    valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
     onPageLoad();
 

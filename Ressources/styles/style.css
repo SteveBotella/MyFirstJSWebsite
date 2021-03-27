@@ -1,4 +1,218 @@
-#valAgents {
-    margin: 0 auto;
+body {
+    margin: auto;
+    background-attachment:fixed;
+}
+
+#headerVideo {
+    height: auto;
+}
+
+video {
+    z-index: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: 100% auto;
+}
+
+#navBar {
+    position: relative;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.90);
+    height: 80px;
+    width: auto;
+}
+
+#riotLogo {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;    
+    margin-left: 25px;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    background-color: rgba(0, 0, 0, 0.1);    
+}
+
+#valorantLogo {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 25px;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    background-color: rgba(0, 0, 0, 0.1);    
+}
+
+#displayAgents {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+    border-bottom: 5px solid transparent;
+}
+
+#displayAgents:hover {
+    border-bottom: 3px solid red;
+}
+
+#displayWeapons {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+}
+
+#displayWeapons:hover {
+    border-bottom: 3px solid red;
+}
+
+#displayMaps {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+}
+
+#displayMaps:hover {
+    border-bottom: 3px solid red;
+}
+
+#valAPI {    
+    margin: 0 auto;    
     width: 1000px; 
+}
+
+.DivAgent {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+}
+
+.agentTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Changa', sans-serif;
+}
+
+.agentDescription {
+    background-color: rgba(71, 71, 71, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 5px;
+    font-family: 'Changa', sans-serif;
+}
+
+.DivAgent img {
+    margin: 25px;
+    height: 250px;
+    width: 250px;
+    border-radius: 10px;
+    border-color: rgb(53, 53, 53);
+    border-style: inset;
+    border-width: 5px;
+}
+
+.DivWeapon {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;   
+}
+
+.weaponTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Changa', sans-serif;
+}
+
+.DivWeapon img {
+    height: 50%;
+    width: 50%;
+}
+
+.DivMap {
+    display: flex;
+	flex-direction: column;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.90);
+    color: white;
+}
+
+.mapTitle {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Changa', sans-serif;
+}
+
+.DivMap img {
+    height: 750px;
+    width: 750px;
+    margin: 0 auto;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#riotFooterLogo {
+    margin: auto;
+    height: auto;
+    width: 200px;
+}
+
+#pplWarning {
+    margin: auto;
+    height: 300px;
+    width: auto;
+}
+
+.Warning {
+    margin: auto;
+    height: 100px;
+    width: auto;
+    z-index: 1;
 }
