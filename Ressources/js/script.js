@@ -213,8 +213,9 @@ $(document).ready(function(){
     let background = new Image();
     background.src = "Ressources/images/canvasBG.png";
 
+    // Add image as playerCharacter
     let characterViper = new Image();
-    characterViper.src = "Ressources/images/characterViper.png";
+    characterViper.src = "Ressources/images/characterViper.png";    
 
     // Make sure the image is loaded
     background.onload = function(){
@@ -249,11 +250,13 @@ $(document).ready(function(){
         }
 
         if (controller.left == true) {
-            playerCharacter.x_velocity -= 0.5;            
+            playerCharacter.x_velocity -= 0.5;
+            characterViper.src = "Ressources/images/characterViperFlip.png";            
         }
 
         if (controller.right == true) {
             playerCharacter.x_velocity += 0.5;
+            characterViper.src = "Ressources/images/characterViper.png";
         }
 
         playerCharacter.y_velocity += 1.5; //Set gravity
@@ -279,8 +282,8 @@ $(document).ready(function(){
         //context.fillStyle = "#202020";
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         //context.fillStyle = "#ff0000";// hex for red
-        context.drawImage(background, 0, 0);
-        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
+        context.drawImage(background, 0, 0);        
+        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);              
         context.beginPath();        
         //context.rect(playerCharacter.x, playerCharacter.y, playerCharacter.width, playerCharacter.height);
         //context.fill();
