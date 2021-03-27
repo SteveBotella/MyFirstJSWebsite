@@ -201,4 +201,20 @@ $(document).ready(function(){
 
     onPageLoad();
 
+    // --- GAME ---
+    let context, controller, rectangle, loop;
+
+    context = document.querySelector("canvas").getContext("2d");
+
+    context.canvas.height = 600;
+    context.canvas.width = 1080;
+
+    let background = new Image();
+    background.src = "Ressources/images/canvasBG.png";
+
+    // Make sure the image is loaded first otherwise nothing will draw.
+    background.onload = function(){
+        context.drawImage(background,0,0);   
+    }
+
 });

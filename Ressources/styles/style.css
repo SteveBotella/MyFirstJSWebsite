@@ -216,3 +216,9 @@ footer {
     width: auto;
     z-index: 1;
 }
+
+/* GAME */
+canvas {
+    display: flex;
+    margin: auto;  
+}
