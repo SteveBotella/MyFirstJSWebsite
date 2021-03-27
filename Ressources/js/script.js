@@ -215,7 +215,11 @@ $(document).ready(function(){
 
     // Add image as playerCharacter
     let characterViper = new Image();
-    characterViper.src = "Ressources/images/characterViper.png";    
+    characterViper.src = "Ressources/images/characterViper.png";  
+    
+    // Add image as playerCharacter2
+    let characterViper2 = new Image();
+    characterViper2.src = "Ressources/images/characterViperFlip.png";
 
     // Make sure the image is loaded
     background.onload = function(){
@@ -224,6 +228,10 @@ $(document).ready(function(){
     
     characterViper.onload = function(){
         context.drawImage(characterViper, 200, 200);   
+    }
+
+    characterViper2.onload = function(){
+        context.drawImage(characterViper2, 200, 200);   
     }
 
     // playerCharacter
@@ -237,6 +245,18 @@ $(document).ready(function(){
         y: 300,
         y_velocity: 0
     };
+
+    // playerCharacter2
+    playerCharacter2 = {
+        height: 192,
+        width: 96,
+        jumping: false,
+        walking: false,
+        x: 600, // Center of canvas
+        x_velocity: 0,
+        y: 300,
+        y_velocity: 0
+    };
   
     controller = {
         left:false,
@@ -244,7 +264,14 @@ $(document).ready(function(){
         up:false,        
     };
 
+    controller2 = {
+        left:false,
+        right:false,
+        up:false,        
+    };
+
     loop = function() {
+        // Player
         if (controller.up && playerCharacter.jumping == false) {
             playerCharacter.y_velocity -= 20;
             playerCharacter.jumping = true;
@@ -263,7 +290,28 @@ $(document).ready(function(){
             playerCharacter.walking = true;
             characterViper.src = "Ressources/images/characterViper.png";
         }
+        
+        // Player2
+        if (controller2.up && playerCharacter2.jumping == false) {
+            playerCharacter2.y_velocity -= 20;
+            playerCharacter2.jumping = true;
+        }
 
+        if (controller2.left == true && playerCharacter2.walking == false) {
+            playerCharacter2.x_velocity -= 4;
+            playerCharacter2.y_velocity -= 7;
+            playerCharacter2.walking = true;
+            characterViper2.src = "Ressources/images/characterViperFlip.png";            
+        }
+
+        if (controller2.right == true && playerCharacter2.walking == false) {
+            playerCharacter2.x_velocity += 4;
+            playerCharacter2.y_velocity -= 7;
+            playerCharacter2.walking = true;
+            characterViper2.src = "Ressources/images/characterViper.png";
+        }
+
+        // Player
         playerCharacter.y_velocity += 1.5; //Set gravity
         playerCharacter.x += playerCharacter.x_velocity; //Move character on the ground with direction
         playerCharacter.y += playerCharacter.y_velocity; // Falling/jumping
@@ -285,11 +333,34 @@ $(document).ready(function(){
             playerCharacter.x = 1000;
         }
 
+        // Player2
+        playerCharacter2.y_velocity += 1.5; //Set gravity
+        playerCharacter2.x += playerCharacter2.x_velocity; //Move character on the ground with direction
+        playerCharacter2.y += playerCharacter2.y_velocity; // Falling/jumping
+        playerCharacter2.x_velocity *= 0.9; //Friction
+        playerCharacter2.y_velocity *= 0.9; //Friction
+
+        // If playerCharacter is falling below floor line
+        if (playerCharacter2.y > 400 - 16 - 32) {
+            playerCharacter2.jumping = false;
+            playerCharacter2.walking = false;
+            playerCharacter2.y = 400 - 16 - 32;
+            playerCharacter2.y_velocity = 0;
+        }
+        
+        // If playerCharacter is going off the left screen
+        if (playerCharacter2.x < - 32) {
+            playerCharacter2.x = - 32;            
+        } else if (playerCharacter2.x > 1000) { // If playerCharacter is going off the right screen
+            playerCharacter2.x = 1000;
+        }
+
         //context.fillStyle = "#202020";
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         //context.fillStyle = "#ff0000";// hex for red
         context.drawImage(background, 0, 0);        
-        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);              
+        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y); 
+        context.drawImage(characterViper2, playerCharacter2.x, playerCharacter2.y);              
         context.beginPath();        
         //context.rect(playerCharacter.x, playerCharacter.y, playerCharacter.width, playerCharacter.height);
         //context.fill();
@@ -305,15 +376,27 @@ $(document).ready(function(){
     };
 
     window.addEventListener('keydown', (e) => {
-        if (e.code === "Numpad5")        controller.up = true
-        else if (e.code === "Numpad3") controller.right = true
-        else if (e.code === "Numpad1") controller.left = true
+        if (e.code === "KeyW")        controller.up = true
+        else if (e.code === "KeyD") controller.right = true
+        else if (e.code === "KeyA") controller.left = true
     });
     window.addEventListener("keyup", (e) => {
-        if (e.code === "Numpad5")        controller.up = false
-        else if (e.code === "Numpad3") controller.right = false
-        else if (e.code === "Numpad1") controller.left = false
+        if (e.code === "KeyW")        controller.up = false
+        else if (e.code === "KeyD") controller.right = false
+        else if (e.code === "KeyA") controller.left = false
     });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === "Numpad5")        controller2.up = true
+        else if (e.code === "Numpad3") controller2.right = true
+        else if (e.code === "Numpad1") controller2.left = true
+    });
+    window.addEventListener("keyup", (e) => {
+        if (e.code === "Numpad5")        controller2.up = false
+        else if (e.code === "Numpad3") controller2.right = false
+        else if (e.code === "Numpad1") controller2.left = false
+    });   
+
     window.requestAnimationFrame(loop);
 
 });
