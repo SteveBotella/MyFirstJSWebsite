@@ -218,8 +218,8 @@ $(document).ready(function(){
     characterViper.src = "Ressources/images/characterViper.png";  
     
     // Add image as playerCharacter2
-    let characterViper2 = new Image();
-    characterViper2.src = "Ressources/images/characterViperFlip.png";
+    let characterJett = new Image();
+    characterJett.src = "Ressources/images/characterJettFlip.png";
 
     // Make sure the image is loaded
     background.onload = function(){
@@ -230,8 +230,8 @@ $(document).ready(function(){
         context.drawImage(characterViper, 200, 200);   
     }
 
-    characterViper2.onload = function(){
-        context.drawImage(characterViper2, 200, 200);   
+    characterJett.onload = function(){
+        context.drawImage(characterJett, 200, 200);   
     }
 
     // playerCharacter
@@ -301,14 +301,14 @@ $(document).ready(function(){
             playerCharacter2.x_velocity -= 4;
             playerCharacter2.y_velocity -= 7;
             playerCharacter2.walking = true;
-            characterViper2.src = "Ressources/images/characterViperFlip.png";            
+            characterJett.src = "Ressources/images/characterJettFlip.png";            
         }
 
         if (controller2.right == true && playerCharacter2.walking == false) {
             playerCharacter2.x_velocity += 4;
             playerCharacter2.y_velocity -= 7;
             playerCharacter2.walking = true;
-            characterViper2.src = "Ressources/images/characterViper.png";
+            characterJett.src = "Ressources/images/characterJett.png";
         }
 
         // Player
@@ -360,7 +360,7 @@ $(document).ready(function(){
         //context.fillStyle = "#ff0000";// hex for red
         context.drawImage(background, 0, 0);        
         context.drawImage(characterViper, playerCharacter.x, playerCharacter.y); 
-        context.drawImage(characterViper2, playerCharacter2.x, playerCharacter2.y);              
+        context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);              
         context.beginPath();        
         //context.rect(playerCharacter.x, playerCharacter.y, playerCharacter.width, playerCharacter.height);
         //context.fill();
