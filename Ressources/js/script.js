@@ -204,8 +204,14 @@ $(document).ready(function(){
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
+    // Create the game scene (window)
     context = document.querySelector("canvas").getContext("2d");
 
+    // Enable/disable inputs
+    let isInputEnable = true;
+    let isInputEnable2 = true;
+
+    // Scene width & height
     context.canvas.height = 600;
     context.canvas.width = 1080;
 
@@ -219,15 +225,15 @@ $(document).ready(function(){
     let characterBubble2 = new Image();
     characterBubble2.src = "";
 
-    // Add images as playerCharacter
+    // Add image as playerCharacter
     let characterViper = new Image();
     characterViper.src = "Ressources/images/characterViper.png";  
     
-    // Add images as playerCharacter2
+    // Add image as playerCharacter2
     let characterJett = new Image();
     characterJett.src = "Ressources/images/characterJettFlip.png";
 
-    // Make sure images are loaded
+    // Make sure all images are loaded (not mean displayed...)
     background.onload = function(){
         context.drawImage(background, 0, 0);   
     }
@@ -254,7 +260,7 @@ $(document).ready(function(){
         width: 96,
         jumping: false,
         walking: false,
-        x: 300, // Center of canvas
+        x: 300,
         x_velocity: 0,
         y: 300,
         y_velocity: 0,
@@ -263,6 +269,7 @@ $(document).ready(function(){
         answer: ""
     };
 
+    // Player1 bubble displaying choices
     playerBubble = {
         height: 96,
         width: 120,        
@@ -274,7 +281,7 @@ $(document).ready(function(){
         width: 96,
         jumping: false,
         walking: false,
-        x: 600, // Center of canvas
+        x: 600,
         x_velocity: 0,
         y: 300,
         y_velocity: 0,
@@ -283,6 +290,7 @@ $(document).ready(function(){
         answer: ""
     };
 
+    // Player2 bubble displaying choices
     playerBubble2 = {
         height: 96,
         width: 120,
@@ -329,13 +337,16 @@ $(document).ready(function(){
             characterViper.src = "Ressources/images/characterViper.png";
         }
 
-        if (controller.vandal == true) {
+        if (controller.vandal == true && isInputEnable == true) {
+            isInputEnable = false;
             playerCharacter.answer = "Ressources/images/characterBubbleVandal.png";
             playerCharacter.choice = true;
-        } else if (controller.spectre == true) {
+        } else if (controller.spectre == true && isInputEnable == true) {
+            isInputEnable = false;
             playerCharacter.answer = "Ressources/images/characterBubbleSpectre.png";
             playerCharacter.choice = true;
-        } else if (controller.knife == true) {
+        } else if (controller.knife == true && isInputEnable == true) {
+            isInputEnable = false;
             playerCharacter.answer = "Ressources/images/characterBubbleKnife.png";
             playerCharacter.choice = true;
         }
@@ -360,13 +371,16 @@ $(document).ready(function(){
             characterJett.src = "Ressources/images/characterJett.png";
         }
 
-        if (controller2.vandal == true) {
+        if (controller2.vandal == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
             playerCharacter2.answer = "Ressources/images/characterBubbleVandal.png";
             playerCharacter2.choice = true;
-        } else if (controller2.spectre == true) {
+        } else if (controller2.spectre == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
             playerCharacter2.answer = "Ressources/images/characterBubbleSpectre.png";
             playerCharacter2.choice = true;
-        } else if (controller2.knife == true) {
+        } else if (controller2.knife == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
             playerCharacter2.answer = "Ressources/images/characterBubbleKnife.png";
             playerCharacter2.choice = true;
         }
@@ -416,21 +430,26 @@ $(document).ready(function(){
         }
         
         // Waiting all player answers
-        if (playerCharacter.choice == true && playerCharacter2.choice == true) {
+        if (playerCharacter.choice == true && playerCharacter2.choice == true && isInputEnable == false && isInputEnable2 == false) {            
             characterBubble.src = playerCharacter.answer;
             characterBubble2.src = playerCharacter2.answer;
+            playerCharacter.choice = false;
+            playerCharacter2.choice = false;                       
             setTimeout(function() {
+                fight(),
                 characterBubble.src = "",
                 playerCharacter.answer = "", 
-                playerCharacter.choice = false, 
+                //playerCharacter.choice = false, 
                 characterBubble2.src = "",
                 playerCharacter2.answer = "", 
-                playerCharacter2.choice = false
-                ;}, 2000);                                                            
+                //playerCharacter2.choice = false
+                isInputEnable = true,
+                isInputEnable2 = true                
+                ;}, 2000);                                                                            
         }
 
-        console.log(playerCharacter.choice);
-        console.log(playerCharacter2.choice);
+        console.log(isInputEnable);
+        console.log(isInputEnable2);
                 
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         context.drawImage(background, 0, 0);        
@@ -489,8 +508,38 @@ $(document).ready(function(){
         else if (e.code === "Numpad7") controller2.vandal = false 
         else if (e.code === "Numpad8") controller2.spectre = false
         else if (e.code === "Numpad9") controller2.knife = false
-    });    
+    });
     
+    // Find fight winner
+    function fight() {
+        if (playerCharacter.answer === playerCharacter2.answer) {
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleVandal.png"){
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleKnife.png") {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            } else {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            }
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleSpectre.png") {
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleKnife.png") {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            } else {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            }
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleKnife.png") {
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleSpectre.png") {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            } else {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            }
+        }
+    };
+
     window.requestAnimationFrame(loop);
 
 });
