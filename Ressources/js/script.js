@@ -201,4 +201,345 @@ $(document).ready(function(){
 
     onPageLoad();
 
+    // --- GAME ---
+    let context, controller, playerCharacter, loop;
+
+    // Create the game scene (window)
+    context = document.querySelector("canvas").getContext("2d");
+
+    // Enable/disable inputs
+    let isInputEnable = true;
+    let isInputEnable2 = true;
+
+    // Scene width & height
+    context.canvas.height = 600;
+    context.canvas.width = 1080;
+
+    // Add images to the scene
+    let background = new Image();
+    background.src = "Ressources/images/canvasBG.png";
+
+    let characterBubble = new Image();
+    characterBubble.src = "";
+
+    let characterBubble2 = new Image();
+    characterBubble2.src = "";
+
+    // Add image as playerCharacter
+    let characterViper = new Image();
+    characterViper.src = "Ressources/images/characterViper.png";  
+    
+    // Add image as playerCharacter2
+    let characterJett = new Image();
+    characterJett.src = "Ressources/images/characterJettFlip.png";
+
+    // Make sure all images are loaded (not mean displayed...)
+    background.onload = function(){
+        context.drawImage(background, 0, 0);   
+    }
+    
+    characterViper.onload = function(){
+        context.drawImage(characterViper, 200, 200);   
+    }
+
+    characterJett.onload = function(){
+        context.drawImage(characterJett, 200, 200);   
+    }
+
+    characterBubble.onload = function(){
+        context.drawImage(characterBubble, 200, 200);
+    } 
+    
+    characterBubble2.onload = function(){
+        context.drawImage(characterBubble2, 200, 200);
+    } 
+
+    // playerCharacter
+    playerCharacter = {
+        height: 192,
+        width: 96,
+        jumping: false,
+        walking: false,
+        x: 300,
+        x_velocity: 0,
+        y: 300,
+        y_velocity: 0,
+        life: 100,
+        choice: false,
+        answer: ""
+    };
+
+    // Player1 bubble displaying choices
+    playerBubble = {
+        height: 96,
+        width: 120,        
+    };
+
+    // playerCharacter2
+    playerCharacter2 = {
+        height: 192,
+        width: 96,
+        jumping: false,
+        walking: false,
+        x: 600,
+        x_velocity: 0,
+        y: 300,
+        y_velocity: 0,
+        life: 100,
+        choice: false,
+        answer: ""
+    };
+
+    // Player2 bubble displaying choices
+    playerBubble2 = {
+        height: 96,
+        width: 120,
+    };
+
+    //controller player1  
+    controller = {
+        left:false,
+        right:false,
+        up:false,
+        vandal:false,
+        spectre:false,
+        knife:false        
+    };
+
+    // Controller player2
+    controller2 = {
+        left:false,
+        right:false,
+        up:false,
+        vandal:false,
+        spectre:false,
+        knife:false               
+    };
+
+    loop = function() {
+        // Player1 controller
+        if (controller.up && playerCharacter.jumping == false) {
+            playerCharacter.y_velocity -= 20;
+            playerCharacter.jumping = true;
+        }
+
+        if (controller.left == true && playerCharacter.walking == false) {
+            playerCharacter.x_velocity -= 4;
+            playerCharacter.y_velocity -= 7;
+            playerCharacter.walking = true;
+            characterViper.src = "Ressources/images/characterViperFlip.png";            
+        }
+
+        if (controller.right == true && playerCharacter.walking == false) {
+            playerCharacter.x_velocity += 4;
+            playerCharacter.y_velocity -= 7;
+            playerCharacter.walking = true;
+            characterViper.src = "Ressources/images/characterViper.png";
+        }
+
+        if (controller.vandal == true && isInputEnable == true) {
+            isInputEnable = false;
+            playerCharacter.answer = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter.choice = true;
+        } else if (controller.spectre == true && isInputEnable == true) {
+            isInputEnable = false;
+            playerCharacter.answer = "Ressources/images/characterBubbleSpectre.png";
+            playerCharacter.choice = true;
+        } else if (controller.knife == true && isInputEnable == true) {
+            isInputEnable = false;
+            playerCharacter.answer = "Ressources/images/characterBubbleKnife.png";
+            playerCharacter.choice = true;
+        }
+
+        // Player2 controller
+        if (controller2.up && playerCharacter2.jumping == false) {
+            playerCharacter2.y_velocity -= 20;
+            playerCharacter2.jumping = true;
+        }
+
+        if (controller2.left == true && playerCharacter2.walking == false) {
+            playerCharacter2.x_velocity -= 4;
+            playerCharacter2.y_velocity -= 7;
+            playerCharacter2.walking = true;
+            characterJett.src = "Ressources/images/characterJettFlip.png";            
+        }
+
+        if (controller2.right == true && playerCharacter2.walking == false) {
+            playerCharacter2.x_velocity += 4;
+            playerCharacter2.y_velocity -= 7;
+            playerCharacter2.walking = true;
+            characterJett.src = "Ressources/images/characterJett.png";
+        }
+
+        if (controller2.vandal == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
+            playerCharacter2.answer = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter2.choice = true;
+        } else if (controller2.spectre == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
+            playerCharacter2.answer = "Ressources/images/characterBubbleSpectre.png";
+            playerCharacter2.choice = true;
+        } else if (controller2.knife == true && isInputEnable2 == true) {
+            isInputEnable2 = false;
+            playerCharacter2.answer = "Ressources/images/characterBubbleKnife.png";
+            playerCharacter2.choice = true;
+        }
+
+        // Player
+        playerCharacter.y_velocity += 1.5; //Set gravity
+        playerCharacter.x += playerCharacter.x_velocity; //Move character on the ground with direction
+        playerCharacter.y += playerCharacter.y_velocity; // Falling/jumping
+        playerCharacter.x_velocity *= 0.9; //Friction
+        playerCharacter.y_velocity *= 0.9; //Friction
+
+        // If playerCharacter is falling below floor line
+        if (playerCharacter.y > 400 - 16 - 32) {
+            playerCharacter.jumping = false;
+            playerCharacter.walking = false;
+            playerCharacter.y = 400 - 16 - 32;
+            playerCharacter.y_velocity = 0;
+        }
+        
+        // If playerCharacter is going off the left screen
+        if (playerCharacter.x < - 32) {
+            playerCharacter.x = - 32;            
+        } else if (playerCharacter.x > 1000) { // If playerCharacter is going off the right screen
+            playerCharacter.x = 1000;
+        }
+
+        // Player2
+        playerCharacter2.y_velocity += 1.5; //Set gravity
+        playerCharacter2.x += playerCharacter2.x_velocity; //Move character on the ground with direction
+        playerCharacter2.y += playerCharacter2.y_velocity; // Falling/jumping
+        playerCharacter2.x_velocity *= 0.9; //Friction
+        playerCharacter2.y_velocity *= 0.9; //Friction
+
+        // If playerCharacter is falling below floor line
+        if (playerCharacter2.y > 400 - 16 - 32) {
+            playerCharacter2.jumping = false;
+            playerCharacter2.walking = false;
+            playerCharacter2.y = 400 - 16 - 32;
+            playerCharacter2.y_velocity = 0;
+        }
+        
+        // If playerCharacter is going off the left screen
+        if (playerCharacter2.x < - 32) {
+            playerCharacter2.x = - 32;            
+        } else if (playerCharacter2.x > 1000) { // If playerCharacter is going off the right screen
+            playerCharacter2.x = 1000;
+        }
+        
+        // Waiting all player answers
+        if (playerCharacter.choice == true && playerCharacter2.choice == true && isInputEnable == false && isInputEnable2 == false) {            
+            characterBubble.src = playerCharacter.answer;
+            characterBubble2.src = playerCharacter2.answer;
+            playerCharacter.choice = false;
+            playerCharacter2.choice = false;                       
+            setTimeout(function() {
+                fight(),
+                characterBubble.src = "",
+                playerCharacter.answer = "", 
+                //playerCharacter.choice = false, 
+                characterBubble2.src = "",
+                playerCharacter2.answer = "", 
+                //playerCharacter2.choice = false
+                isInputEnable = true,
+                isInputEnable2 = true                
+                ;}, 2000);                                                                            
+        }
+
+        console.log(isInputEnable);
+        console.log(isInputEnable2);
+                
+        context.fillRect(0, 0, 1080, 600);// x, y, width, height
+        context.drawImage(background, 0, 0);        
+        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
+        context.drawImage(characterBubble, playerCharacter.x, playerCharacter.y - 96);
+        context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);
+        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);
+        context.font = '24px sherif';
+        context.fillStyle = "white";
+        context.fillText('Viper HP : ' + playerCharacter.life, 50, 50);
+        context.fillText('Jett HP : ' + playerCharacter2.life, 900, 50);        
+        context.strokeStyle = "rgba(0, 0, 0, 0)";
+        context.lineWidth = 0;        
+        context.moveTo(0, 500);
+        context.lineTo(1080, 500);
+        context.stroke();
+        context.beginPath();                  
+
+        // call update when the browser is ready to draw again
+        window.requestAnimationFrame(loop);
+    };
+
+    // Inputs player1
+    window.addEventListener('keydown', (e) => {
+        if (e.code === "KeyW")        controller.up = true
+        else if (e.code === "KeyD") controller.right = true
+        else if (e.code === "KeyA") controller.left = true
+        else if (e.code === "KeyQ") controller.vandal = true 
+        else if (e.code === "KeyE") controller.spectre = true
+        else if (e.code === "KeyF") controller.knife = true
+    });
+
+    window.addEventListener("keyup", (e) => {
+        if (e.code === "KeyW")        controller.up = false
+        else if (e.code === "KeyD") controller.right = false
+        else if (e.code === "KeyA") controller.left = false
+        else if (e.code === "KeyQ") controller.vandal = false 
+        else if (e.code === "KeyE") controller.spectre = false
+        else if (e.code === "KeyF") controller.knife = false
+    });
+
+    // Inputs player2
+    window.addEventListener('keydown', (e) => {
+        if (e.code === "Numpad5")        controller2.up = true
+        else if (e.code === "Numpad3") controller2.right = true
+        else if (e.code === "Numpad1") controller2.left = true
+        else if (e.code === "Numpad7") controller2.vandal = true 
+        else if (e.code === "Numpad8") controller2.spectre = true
+        else if (e.code === "Numpad9") controller2.knife = true
+    });
+
+    window.addEventListener("keyup", (e) => {
+        if (e.code === "Numpad5")        controller2.up = false
+        else if (e.code === "Numpad3") controller2.right = false
+        else if (e.code === "Numpad1") controller2.left = false
+        else if (e.code === "Numpad7") controller2.vandal = false 
+        else if (e.code === "Numpad8") controller2.spectre = false
+        else if (e.code === "Numpad9") controller2.knife = false
+    });
+    
+    // Find fight winner
+    function fight() {
+        if (playerCharacter.answer === playerCharacter2.answer) {
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleVandal.png"){
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleKnife.png") {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            } else {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            }
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleSpectre.png") {
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleKnife.png") {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            } else {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            }
+        } else if (playerCharacter.answer == "Ressources/images/characterBubbleKnife.png") {
+            if (playerCharacter2.answer == "Ressources/images/characterBubbleSpectre.png") {
+                //winner = "Won";
+                playerCharacter.life = playerCharacter.life - 20;
+            } else {
+                //winner = "Lost";
+                playerCharacter2.life = playerCharacter2.life - 20;
+            }
+        }
+    };
+
+    window.requestAnimationFrame(loop);
+
 });

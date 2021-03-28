@@ -1,6 +1,10 @@
 body {
-    margin: auto;
-    background-attachment:fixed;
+    margin: 0;
+    background-image: url('../images/valorantBG.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 #headerVideo {
@@ -215,4 +219,10 @@ footer {
     height: 100px;
     width: auto;
     z-index: 1;
+}
+
+/* GAME */
+canvas {
+    display: flex;
+    margin: auto;  
 }
