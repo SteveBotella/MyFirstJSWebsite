@@ -259,7 +259,8 @@ $(document).ready(function(){
         y: 300,
         y_velocity: 0,
         life: 100,
-        choice: false
+        choice: false,
+        answer: ""
     };
 
     playerBubble = {
@@ -278,7 +279,8 @@ $(document).ready(function(){
         y: 300,
         y_velocity: 0,
         life: 100,
-        choice: false
+        choice: false,
+        answer: ""
     };
 
     playerBubble2 = {
@@ -328,7 +330,13 @@ $(document).ready(function(){
         }
 
         if (controller.vandal == true) {
-            //characterBubble.src = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter.answer = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter.choice = true;
+        } else if (controller.spectre == true) {
+            playerCharacter.answer = "Ressources/images/characterBubbleSpectre.png";
+            playerCharacter.choice = true;
+        } else if (controller.knife == true) {
+            playerCharacter.answer = "Ressources/images/characterBubbleKnife.png";
             playerCharacter.choice = true;
         }
 
@@ -353,7 +361,13 @@ $(document).ready(function(){
         }
 
         if (controller2.vandal == true) {
-            //characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter2.answer = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter2.choice = true;
+        } else if (controller2.spectre == true) {
+            playerCharacter2.answer = "Ressources/images/characterBubbleSpectre.png";
+            playerCharacter2.choice = true;
+        } else if (controller2.knife == true) {
+            playerCharacter2.answer = "Ressources/images/characterBubbleKnife.png";
             playerCharacter2.choice = true;
         }
 
@@ -403,9 +417,16 @@ $(document).ready(function(){
         
         // Waiting all player answers
         if (playerCharacter.choice == true && playerCharacter2.choice == true) {
-            characterBubble.src = "Ressources/images/characterBubbleVandal.png";
-            characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
-            setTimeout(function() {characterBubble.src = "", playerCharacter.choice = false, characterBubble2.src = "", playerCharacter2.choice = false;}, 2000);                                                            
+            characterBubble.src = playerCharacter.answer;
+            characterBubble2.src = playerCharacter2.answer;
+            setTimeout(function() {
+                characterBubble.src = "",
+                playerCharacter.answer = "", 
+                playerCharacter.choice = false, 
+                characterBubble2.src = "",
+                playerCharacter2.answer = "", 
+                playerCharacter2.choice = false
+                ;}, 2000);                                                            
         }
 
         console.log(playerCharacter.choice);
