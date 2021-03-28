@@ -213,15 +213,21 @@ $(document).ready(function(){
     let background = new Image();
     background.src = "Ressources/images/canvasBG.png";
 
-    // Add image as playerCharacter
+    // Add images as playerCharacter
     let characterViper = new Image();
     characterViper.src = "Ressources/images/characterViper.png";  
+
+    let characterBubble = new Image();
+    characterBubble.src = "";
     
-    // Add image as playerCharacter2
+    // Add images as playerCharacter2
     let characterJett = new Image();
     characterJett.src = "Ressources/images/characterJettFlip.png";
 
-    // Make sure the image is loaded
+    let characterBubble2 = new Image();
+    characterBubble2.src = "";
+
+    // Make sure images are loaded
     background.onload = function(){
         context.drawImage(background, 0, 0);   
     }
@@ -232,6 +238,14 @@ $(document).ready(function(){
 
     characterJett.onload = function(){
         context.drawImage(characterJett, 200, 200);   
+    }
+
+    characterBubble.onload = function(){
+        context.drawImage(characterBubble, 200, 200);
+    }
+
+    characterBubble2.onload = function(){
+        context.drawImage(characterBubble2, 200, 200);
     }
 
     // playerCharacter
@@ -246,6 +260,15 @@ $(document).ready(function(){
         y_velocity: 0
     };
 
+    playerBubble = {
+        height: 96,
+        width: 120,
+        x: playerCharacter.x,
+        y: playerCharacter.y - 64,
+        x_velocity: playerCharacter.x_velocity,
+        y_velocity: playerCharacter.y_velocity
+    };
+
     // playerCharacter2
     playerCharacter2 = {
         height: 192,
@@ -257,21 +280,34 @@ $(document).ready(function(){
         y: 300,
         y_velocity: 0
     };
-  
+
+    playerBubble2 = {
+        height: 96,
+        width: 120,
+        x: playerCharacter.x,
+        y: playerCharacter.y - 64,
+        x_velocity: playerCharacter.x_velocity,
+        y_velocity: playerCharacter.y_velocity
+    };
+
+    //controller player1  
     controller = {
         left:false,
         right:false,
-        up:false,        
+        up:false,
+        vandal:false,        
     };
 
+    // Controller player2
     controller2 = {
         left:false,
         right:false,
-        up:false,        
+        up:false,
+        vandal:false,               
     };
 
     loop = function() {
-        // Player
+        // Player1
         if (controller.up && playerCharacter.jumping == false) {
             playerCharacter.y_velocity -= 20;
             playerCharacter.jumping = true;
@@ -289,6 +325,14 @@ $(document).ready(function(){
             playerCharacter.y_velocity -= 7;
             playerCharacter.walking = true;
             characterViper.src = "Ressources/images/characterViper.png";
+        }
+
+        if (controller.vandal == true) {
+            characterBubble.src = "Ressources/images/characterBubble.png";
+        }
+
+        if (controller.vandal == false) {
+            characterBubble.src = "";
         }
         
         // Player2
@@ -309,6 +353,14 @@ $(document).ready(function(){
             playerCharacter2.y_velocity -= 7;
             playerCharacter2.walking = true;
             characterJett.src = "Ressources/images/characterJett.png";
+        }
+
+        if (controller2.vandal == true) {
+            characterBubble2.src = "Ressources/images/characterBubble.png";
+        }
+
+        if (controller2.vandal == false) {
+            characterBubble2.src = "";
         }
 
         // Player
@@ -359,8 +411,10 @@ $(document).ready(function(){
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         //context.fillStyle = "#ff0000";// hex for red
         context.drawImage(background, 0, 0);        
-        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y); 
-        context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);              
+        context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
+        context.drawImage(characterBubble, playerCharacter.x, playerCharacter.y - 96);
+        context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);
+        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);              
         context.beginPath();        
         //context.rect(playerCharacter.x, playerCharacter.y, playerCharacter.width, playerCharacter.height);
         //context.fill();
@@ -375,26 +429,32 @@ $(document).ready(function(){
         window.requestAnimationFrame(loop);
     };
 
+    // Inputs player1
     window.addEventListener('keydown', (e) => {
         if (e.code === "KeyW")        controller.up = true
         else if (e.code === "KeyD") controller.right = true
         else if (e.code === "KeyA") controller.left = true
+        else if (e.code === "KeyQ") controller.vandal = true
     });
     window.addEventListener("keyup", (e) => {
         if (e.code === "KeyW")        controller.up = false
         else if (e.code === "KeyD") controller.right = false
         else if (e.code === "KeyA") controller.left = false
+        else if (e.code === "KeyQ") controller.vandal = false
     });
 
+    // Inputs player2
     window.addEventListener('keydown', (e) => {
         if (e.code === "Numpad5")        controller2.up = true
         else if (e.code === "Numpad3") controller2.right = true
         else if (e.code === "Numpad1") controller2.left = true
+        else if (e.code === "Numpad7") controller2.vandal = true
     });
     window.addEventListener("keyup", (e) => {
         if (e.code === "Numpad5")        controller2.up = false
         else if (e.code === "Numpad3") controller2.right = false
         else if (e.code === "Numpad1") controller2.left = false
+        else if (e.code === "Numpad7") controller2.vandal = false
     });   
 
     window.requestAnimationFrame(loop);
