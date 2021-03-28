@@ -209,23 +209,23 @@ $(document).ready(function(){
     context.canvas.height = 600;
     context.canvas.width = 1080;
 
-    // Add image as BG to the scene
+    // Add images to the scene
     let background = new Image();
     background.src = "Ressources/images/canvasBG.png";
+
+    let characterBubble = new Image();
+    characterBubble.src = "";
+
+    let characterBubble2 = new Image();
+    characterBubble2.src = "";
 
     // Add images as playerCharacter
     let characterViper = new Image();
     characterViper.src = "Ressources/images/characterViper.png";  
-
-    let characterBubble = new Image();
-    characterBubble.src = "";
     
     // Add images as playerCharacter2
     let characterJett = new Image();
     characterJett.src = "Ressources/images/characterJettFlip.png";
-
-    let characterBubble2 = new Image();
-    characterBubble2.src = "";
 
     // Make sure images are loaded
     background.onload = function(){
@@ -242,11 +242,11 @@ $(document).ready(function(){
 
     characterBubble.onload = function(){
         context.drawImage(characterBubble, 200, 200);
-    }
-
+    } 
+    
     characterBubble2.onload = function(){
         context.drawImage(characterBubble2, 200, 200);
-    }
+    } 
 
     // playerCharacter
     playerCharacter = {
@@ -262,11 +262,7 @@ $(document).ready(function(){
 
     playerBubble = {
         height: 96,
-        width: 120,
-        x: playerCharacter.x,
-        y: playerCharacter.y - 64,
-        x_velocity: playerCharacter.x_velocity,
-        y_velocity: playerCharacter.y_velocity
+        width: 120,        
     };
 
     // playerCharacter2
@@ -284,10 +280,6 @@ $(document).ready(function(){
     playerBubble2 = {
         height: 96,
         width: 120,
-        x: playerCharacter.x,
-        y: playerCharacter.y - 64,
-        x_velocity: playerCharacter.x_velocity,
-        y_velocity: playerCharacter.y_velocity
     };
 
     //controller player1  
@@ -295,7 +287,9 @@ $(document).ready(function(){
         left:false,
         right:false,
         up:false,
-        vandal:false,        
+        vandal:false,
+        spectre:false,
+        knife:false        
     };
 
     // Controller player2
@@ -303,7 +297,9 @@ $(document).ready(function(){
         left:false,
         right:false,
         up:false,
-        vandal:false,               
+        vandal:false,
+        spectre:false,
+        knife:false               
     };
 
     loop = function() {
@@ -328,13 +324,21 @@ $(document).ready(function(){
         }
 
         if (controller.vandal == true) {
-            characterBubble.src = "Ressources/images/characterBubble.png";
-        }
-
-        if (controller.vandal == false) {
-            characterBubble.src = "";
+            characterBubble.src = "Ressources/images/characterBubbleVandal.png";
         }
         
+        else if (controller.spectre == true) {
+            characterBubble.src = "Ressources/images/characterBubbleSpectre.png";
+        }
+
+        else if (controller.knife == true) {
+            characterBubble.src = "Ressources/images/characterBubbleKnife.png";
+        }
+
+        else {
+            characterBubble.src = "";
+        }
+
         // Player2
         if (controller2.up && playerCharacter2.jumping == false) {
             playerCharacter2.y_velocity -= 20;
@@ -356,10 +360,18 @@ $(document).ready(function(){
         }
 
         if (controller2.vandal == true) {
-            characterBubble2.src = "Ressources/images/characterBubble.png";
+            characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
+        }
+        
+        else if (controller2.spectre == true) {
+            characterBubble2.src = "Ressources/images/characterBubbleSpectre.png";
         }
 
-        if (controller2.vandal == false) {
+        else if (controller2.knife == true) {
+            characterBubble2.src = "Ressources/images/characterBubbleKnife.png";
+        }
+
+        else {
             characterBubble2.src = "";
         }
 
@@ -406,24 +418,19 @@ $(document).ready(function(){
         } else if (playerCharacter2.x > 1000) { // If playerCharacter is going off the right screen
             playerCharacter2.x = 1000;
         }
-
-        //context.fillStyle = "#202020";
+        
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
-        //context.fillStyle = "#ff0000";// hex for red
         context.drawImage(background, 0, 0);        
         context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
         context.drawImage(characterBubble, playerCharacter.x, playerCharacter.y - 96);
         context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);
-        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);              
-        context.beginPath();        
-        //context.rect(playerCharacter.x, playerCharacter.y, playerCharacter.width, playerCharacter.height);
-        //context.fill();
+        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);        
         context.strokeStyle = "rgba(0, 0, 0, 0)";
-        context.lineWidth = 0;
-        context.beginPath();
+        context.lineWidth = 0;        
         context.moveTo(0, 500);
         context.lineTo(1080, 500);
-        context.stroke();                  
+        context.stroke();
+        context.beginPath();                  
 
         // call update when the browser is ready to draw again
         window.requestAnimationFrame(loop);
@@ -435,12 +442,16 @@ $(document).ready(function(){
         else if (e.code === "KeyD") controller.right = true
         else if (e.code === "KeyA") controller.left = true
         else if (e.code === "KeyQ") controller.vandal = true
+        else if (e.code === "KeyE") controller.spectre = true
+        else if (e.code === "KeyF") controller.knife = true
     });
     window.addEventListener("keyup", (e) => {
         if (e.code === "KeyW")        controller.up = false
         else if (e.code === "KeyD") controller.right = false
         else if (e.code === "KeyA") controller.left = false
         else if (e.code === "KeyQ") controller.vandal = false
+        else if (e.code === "KeyE") controller.spectre = false
+        else if (e.code === "KeyF") controller.knife = false
     });
 
     // Inputs player2
@@ -449,12 +460,16 @@ $(document).ready(function(){
         else if (e.code === "Numpad3") controller2.right = true
         else if (e.code === "Numpad1") controller2.left = true
         else if (e.code === "Numpad7") controller2.vandal = true
+        else if (e.code === "Numpad8") controller2.spectre = true
+        else if (e.code === "Numpad9") controller2.knife = true
     });
     window.addEventListener("keyup", (e) => {
         if (e.code === "Numpad5")        controller2.up = false
         else if (e.code === "Numpad3") controller2.right = false
         else if (e.code === "Numpad1") controller2.left = false
         else if (e.code === "Numpad7") controller2.vandal = false
+        else if (e.code === "Numpad8") controller2.spectre = false
+        else if (e.code === "Numpad9") controller2.knife = false
     });   
 
     window.requestAnimationFrame(loop);
