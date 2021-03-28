@@ -257,7 +257,9 @@ $(document).ready(function(){
         x: 300, // Center of canvas
         x_velocity: 0,
         y: 300,
-        y_velocity: 0
+        y_velocity: 0,
+        life: 100,
+        choice: false
     };
 
     playerBubble = {
@@ -274,7 +276,9 @@ $(document).ready(function(){
         x: 600, // Center of canvas
         x_velocity: 0,
         y: 300,
-        y_velocity: 0
+        y_velocity: 0,
+        life: 100,
+        choice: false
     };
 
     playerBubble2 = {
@@ -303,7 +307,7 @@ $(document).ready(function(){
     };
 
     loop = function() {
-        // Player1
+        // Player1 controller
         if (controller.up && playerCharacter.jumping == false) {
             playerCharacter.y_velocity -= 20;
             playerCharacter.jumping = true;
@@ -324,22 +328,11 @@ $(document).ready(function(){
         }
 
         if (controller.vandal == true) {
-            characterBubble.src = "Ressources/images/characterBubbleVandal.png";
-        }
-        
-        else if (controller.spectre == true) {
-            characterBubble.src = "Ressources/images/characterBubbleSpectre.png";
+            //characterBubble.src = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter.choice = true;
         }
 
-        else if (controller.knife == true) {
-            characterBubble.src = "Ressources/images/characterBubbleKnife.png";
-        }
-
-        else {
-            characterBubble.src = "";
-        }
-
-        // Player2
+        // Player2 controller
         if (controller2.up && playerCharacter2.jumping == false) {
             playerCharacter2.y_velocity -= 20;
             playerCharacter2.jumping = true;
@@ -360,19 +353,8 @@ $(document).ready(function(){
         }
 
         if (controller2.vandal == true) {
-            characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
-        }
-        
-        else if (controller2.spectre == true) {
-            characterBubble2.src = "Ressources/images/characterBubbleSpectre.png";
-        }
-
-        else if (controller2.knife == true) {
-            characterBubble2.src = "Ressources/images/characterBubbleKnife.png";
-        }
-
-        else {
-            characterBubble2.src = "";
+            //characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
+            playerCharacter2.choice = true;
         }
 
         // Player
@@ -419,12 +401,26 @@ $(document).ready(function(){
             playerCharacter2.x = 1000;
         }
         
+        // Waiting all player answers
+        if (playerCharacter.choice == true && playerCharacter2.choice == true) {
+            characterBubble.src = "Ressources/images/characterBubbleVandal.png";
+            characterBubble2.src = "Ressources/images/characterBubbleVandal.png";
+            setTimeout(function() {characterBubble.src = "", playerCharacter.choice = false, characterBubble2.src = "", playerCharacter2.choice = false;}, 2000);                                                            
+        }
+
+        console.log(playerCharacter.choice);
+        console.log(playerCharacter2.choice);
+                
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         context.drawImage(background, 0, 0);        
         context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
         context.drawImage(characterBubble, playerCharacter.x, playerCharacter.y - 96);
         context.drawImage(characterJett, playerCharacter2.x, playerCharacter2.y);
-        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);        
+        context.drawImage(characterBubble2, playerCharacter2.x, playerCharacter2.y - 96);
+        context.font = '24px sherif';
+        context.fillStyle = "white";
+        context.fillText('Viper HP : ' + playerCharacter.life, 50, 50);
+        context.fillText('Jett HP : ' + playerCharacter2.life, 900, 50);        
         context.strokeStyle = "rgba(0, 0, 0, 0)";
         context.lineWidth = 0;        
         context.moveTo(0, 500);
@@ -441,15 +437,16 @@ $(document).ready(function(){
         if (e.code === "KeyW")        controller.up = true
         else if (e.code === "KeyD") controller.right = true
         else if (e.code === "KeyA") controller.left = true
-        else if (e.code === "KeyQ") controller.vandal = true
+        else if (e.code === "KeyQ") controller.vandal = true 
         else if (e.code === "KeyE") controller.spectre = true
         else if (e.code === "KeyF") controller.knife = true
     });
+
     window.addEventListener("keyup", (e) => {
         if (e.code === "KeyW")        controller.up = false
         else if (e.code === "KeyD") controller.right = false
         else if (e.code === "KeyA") controller.left = false
-        else if (e.code === "KeyQ") controller.vandal = false
+        else if (e.code === "KeyQ") controller.vandal = false 
         else if (e.code === "KeyE") controller.spectre = false
         else if (e.code === "KeyF") controller.knife = false
     });
@@ -459,19 +456,20 @@ $(document).ready(function(){
         if (e.code === "Numpad5")        controller2.up = true
         else if (e.code === "Numpad3") controller2.right = true
         else if (e.code === "Numpad1") controller2.left = true
-        else if (e.code === "Numpad7") controller2.vandal = true
+        else if (e.code === "Numpad7") controller2.vandal = true 
         else if (e.code === "Numpad8") controller2.spectre = true
         else if (e.code === "Numpad9") controller2.knife = true
     });
+
     window.addEventListener("keyup", (e) => {
         if (e.code === "Numpad5")        controller2.up = false
         else if (e.code === "Numpad3") controller2.right = false
         else if (e.code === "Numpad1") controller2.left = false
-        else if (e.code === "Numpad7") controller2.vandal = false
+        else if (e.code === "Numpad7") controller2.vandal = false 
         else if (e.code === "Numpad8") controller2.spectre = false
         else if (e.code === "Numpad9") controller2.knife = false
-    });   
-
+    });    
+    
     window.requestAnimationFrame(loop);
 
 });
