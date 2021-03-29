@@ -183,9 +183,16 @@ $(document).ready(function(){
 
     // DropDownMenu    
     document.getElementById("dropDownMenu").style.visibility = "hidden";
+    let isDropDownMenuEnable = false;
 
     $('#riotLogo').click(function() {
-        document.getElementById("dropDownMenu").style.visibility = "visible";
+        if (isDropDownMenuEnable == false) {
+            document.getElementById("dropDownMenu").style.visibility = "visible";
+            isDropDownMenuEnable = true;
+        } else {
+            document.getElementById("dropDownMenu").style.visibility = "hidden";
+            isDropDownMenuEnable = false;
+        }        
     });
 
     // Mouse hovering valorantLogo
