@@ -51,6 +51,12 @@ video {
     background-color: rgba(0, 0, 0, 0.1);    
 }
 
+.fotorama {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
 #displayAgents {
     display: flex;
     margin-top: auto;

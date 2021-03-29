@@ -149,7 +149,7 @@ $(document).ready(function(){
         let remove = document.getElementById('valAPI');
         remove.innerHTML = '';   
     }
-
+    
     // --- EVENTS ---
     // Button display Agents
     $('#displayAgents').click(event => {
@@ -186,8 +186,14 @@ $(document).ready(function(){
 
     // Mouse hovering riotLogo
     let riotLogo = document.getElementById("riotLogo");
-    riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
-    riotLogo.onmouseout = function() {riotLogo.src = "Ressources/images/riotFistLogo.png";}
+    riotLogo.onmouseover = function() {
+        riotLogo.src = "Ressources/images/riotLogo.png";                     
+    }
+
+    // Mouse stop hovering
+    riotLogo.onmouseout = function() {
+        riotLogo.src = "Ressources/images/riotFistLogo.png";    
+    }
         
     // Click on valorantLogo
     $('#valorantLogo').click(function() {
