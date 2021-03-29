@@ -38,8 +38,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -77,8 +76,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -112,8 +110,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -184,16 +181,17 @@ $(document).ready(function(){
         )
     });
 
-    // Mouse hovering riotLogo
-    let riotLogo = document.getElementById("riotLogo");
-    riotLogo.onmouseover = function() {
-        riotLogo.src = "Ressources/images/riotLogo.png";                     
-    }
+    // DropDownMenu    
+    document.getElementById("dropDownMenu").style.visibility = "hidden";
 
-    // Mouse stop hovering
-    riotLogo.onmouseout = function() {
-        riotLogo.src = "Ressources/images/riotFistLogo.png";    
-    }
+    $('#riotLogo').click(function() {
+        document.getElementById("dropDownMenu").style.visibility = "visible";
+    });
+
+    // Mouse hovering valorantLogo
+    let riotLogo = document.getElementById("riotLogo");
+    riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
+    riotLogo.onmouseout = function() {riotLogo.src = "Ressources/images/riotFistLogo.png";}
         
     // Click on valorantLogo
     $('#valorantLogo').click(function() {
@@ -322,7 +320,7 @@ $(document).ready(function(){
         knife:false               
     };
 
-    loop = function() {
+    loop = function() {        
         // Player1 controller
         if (controller.up && playerCharacter.jumping == false) {
             playerCharacter.y_velocity -= 20;

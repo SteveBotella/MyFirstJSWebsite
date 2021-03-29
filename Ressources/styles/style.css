@@ -51,6 +51,18 @@ video {
     background-color: rgba(0, 0, 0, 0.1);    
 }
 
+#dropDownMenu {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    min-width: 200px;
+    min-height: 160px;
+    width: 200px;
+    height: 160px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.90);
+}
+
 .fotorama {
     margin-top: 50px;
     display: flex;
