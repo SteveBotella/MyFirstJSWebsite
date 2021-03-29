@@ -4,8 +4,12 @@
         <meta charset="utf-8">
         <title>MyFirstJSWebsite</title>
         <link rel="stylesheet" href="Ressources/styles/style.css">
+        <!-- Fotorama from CDNJS, 19 KB -->
+        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">               
         <script src="Ressources/js/jquery-3.6.0.js" defer></script>        
-        <script src="Ressources/js/script.js" defer></script>        
+        <script src="Ressources/js/script.js" defer></script>
+        <!-- Fotorama from CDNJS, 19 KB -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js" defer></script>                
     </head>
     <body>
         <header>
@@ -20,11 +24,14 @@
                 <video class="video" src="https://playvalorant.com/assets/video/Retake-hero-desktop.mp4" type="video/mp4" autoplay loop muted >
                 </video>                
             </div>                                   
-        </header>               
+        </header>
+        <!-- Add images to <div class="fotorama"></div> -->
+        <div class="fotorama">
+          <img src="https://s.fotorama.io/1.jpg">
+          <img src="https://s.fotorama.io/2.jpg">
+        </div>                    
         <div id="valAPI">
-
-        </div>
-        
+        </div>        
         <footer>
             <img id="riotFooterLogo" src="Ressources/images/riotFooterLogo.png" />
             <div id="pplWarning">
