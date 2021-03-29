@@ -75,6 +75,10 @@ button {
     border-bottom: 5px solid transparent;
 }
 
+button a:link {
+    color: white;
+}
+
 button:hover {
     border-bottom: 3px solid red;
 }

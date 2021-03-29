@@ -4,9 +4,32 @@
         <meta charset="utf-8">
         <title>MyFirstJSWebsite</title>
         <link rel="stylesheet" href="Ressources/styles/style.css">
+        <!-- Fotorama from CDNJS, 19 KB -->
+        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">               
         <script src="Ressources/js/jquery-3.6.0.js" defer></script>        
-        <script src="Ressources/js/script.js" defer></script>        
+        <script src="Ressources/js/script.js" defer></script>
+        <!-- Fotorama from CDNJS, 19 KB -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js" defer></script>                
     </head>
+    <body>
+        <header>
+            <nav id="navBar">
+                <img id="riotLogo" src="Ressources/images/riotFistLogo.png"/>
+                <img id="valorantLogo" src="Ressources/images/valorantLogo.png" />                
+                <a id="displayAgents">Agents</a>                
+                <a id="displayWeapons">Weapons</a>                
+                <a id="displayMaps">Maps</a>                    
+            </nav>
+            <div id="dropDownMenu">
+                <button id="home" onclick="document.location='index.html'">Home</button>               
+                <button id="gallery" onclick="document.location='gallery.html'">Gallery</button>               
+                <button id="game" onclick="document.location='game.html'">Game</button>         
+            </div>            
+            <div id="headerVideo">                
+                <video class="video" src="Ressources/images/Retake-hero-desktop.mp4" type="video/mp4" autoplay loop muted >
+                </video>                
+            </div>                                   
+        </header>
     <body>
         <header>
 
