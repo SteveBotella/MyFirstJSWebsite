@@ -9,21 +9,25 @@ body {
 
 #headerVideo {
     height: auto;
+    width: auto;
 }
 
 video {
     z-index: 0;
+    height: auto;
+    width: 100%; /*
     min-width: 100%;
-    min-height: 100%;
-    background-size: 100% auto;
+    min-height: 100%; */
+    background-size: 100% auto;    
 }
 
 #navBar {
-    position: relative;
+    position: fixed;
     display: flex;
     background-color: rgba(0, 0, 0, 0.90);
     height: 80px;
-    width: auto;
+    width: 100%;
+    z-index: 2;
 }
 
 #riotLogo {
@@ -53,15 +57,19 @@ video {
 
 #dropDownMenu {
     display: flex;
-    position: absolute;
+    position: fixed;
+    margin-top: 80px;
     flex-direction: column;
     min-width: 200px;
     width: 200px;
-    height: auto;    
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;    
 }
 
 button {
-    background-color: rgba(0, 0, 0, 0.80);
+    background-color: rgba(0, 0, 0, 0.6);
     border: none;
     border-radius: 8px;
     margin-top: 1px;
