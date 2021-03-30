@@ -197,17 +197,17 @@ $(document).ready(function(){
 
     // Click on Home
     $('#home').click(function() {
-        window.open('https://eager-mclean-a32b39.netlify.app/index.html');
+        window.location.replace('https://eager-mclean-a32b39.netlify.app/index.html');
     });
 
     // Click on Gallery
     $('#gallery').click(function() {
-        window.open('https://eager-mclean-a32b39.netlify.app/gallery.html');
+        window.location.replace('https://eager-mclean-a32b39.netlify.app/gallery.html');
     });
 
     // Click on Game
     $('#game').click(function() {
-        window.open('https://eager-mclean-a32b39.netlify.app/game.html');
+        window.location.replace('https://eager-mclean-a32b39.netlify.app/game.html');
     });
 
     // Mouse hovering valorantLogo
