@@ -196,17 +196,17 @@ $(document).ready(function(){
     });
 
     // Click on Home
-    $('#valorantLogo').click(function() {
+    $('#home').click(function() {
         window.open('https://eager-mclean-a32b39.netlify.app/index.html');
     });
 
     // Click on Gallery
-    $('#valorantLogo').click(function() {
+    $('#gallery').click(function() {
         window.open('https://eager-mclean-a32b39.netlify.app/gallery.html');
     });
 
     // Click on Game
-    $('#valorantLogo').click(function() {
+    $('#game').click(function() {
         window.open('https://eager-mclean-a32b39.netlify.app/game.html');
     });
 
