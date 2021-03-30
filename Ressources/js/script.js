@@ -195,6 +195,21 @@ $(document).ready(function(){
         }        
     });
 
+    // Click on Home
+    $('#valorantLogo').click(function() {
+        window.open('https://eager-mclean-a32b39.netlify.app/index.html');
+    });
+
+    // Click on Gallery
+    $('#valorantLogo').click(function() {
+        window.open('https://eager-mclean-a32b39.netlify.app/gallery.html');
+    });
+
+    // Click on Game
+    $('#valorantLogo').click(function() {
+        window.open('https://eager-mclean-a32b39.netlify.app/game.html');
+    });
+
     // Mouse hovering valorantLogo
     let riotLogo = document.getElementById("riotLogo");
     riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
