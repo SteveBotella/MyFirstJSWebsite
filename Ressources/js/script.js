@@ -91,7 +91,7 @@ $(document).ready(function(){
                     let commentText = document.createElement("text");
                     let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
                     commentText.setAttribute("id", "comment" + currentAgent + commentID);                
-                    $("#allComments" + currentAgent).append(commentText);
+                    $("#allComments" + currentAgent).prepend(commentText);
                     $('#comment' + currentAgent + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }
@@ -267,7 +267,7 @@ $(document).ready(function(){
     valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
     onPageLoad();
-    
+
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
