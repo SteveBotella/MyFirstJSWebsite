@@ -194,7 +194,6 @@ $(document).ready(function(){
             isDropDownMenuEnable = false;
         }        
     });
-
     // Click on Home
     $('#home').click(function() {
         window.location.replace('https://eager-mclean-a32b39.netlify.app/index.html');
@@ -209,6 +208,7 @@ $(document).ready(function(){
     $('#game').click(function() {
         window.location.replace('https://eager-mclean-a32b39.netlify.app/game.html');
     });
+    
 
     // Mouse hovering valorantLogo
     let riotLogo = document.getElementById("riotLogo");
