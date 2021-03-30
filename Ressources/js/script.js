@@ -1,5 +1,10 @@
-// Feed valAgents
+// Run only when document ready
 $(document).ready(function(){
+    // Feed
+    let agentNum = 0;
+    let weaponNum = 0;
+    let mapNum = 0;
+
     function requestApi(url, method, onSuccess, onFail) {
         $.ajax({
             // Request Url
@@ -27,7 +32,7 @@ $(document).ready(function(){
     }
     // Function to add agent object as a div
     function addAgent(response) {
-        for (let agentNum = 0; agentNum < response.data.length; agentNum++){
+        for (agentNum; agentNum < response.data.length; agentNum++){
             // Create new div
             let newDiv = document.createElement("div");
             
@@ -59,76 +64,111 @@ $(document).ready(function(){
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                                   
+            $("#valAPI").append(newDiv);
+            
+            // Add all Comments & a form to add a Comments            
+            // Create html balises            
+            let allComments = document.createElement("div");            
+            let newInputComment = document.createElement("input");            
+            let newButton = document.createElement("button");                                  
+
+            // Set attributes            
+            allComments.setAttribute("id", "allComments" + agentNum);
+            allComments.setAttribute("class", "comments");
+            newInputComment.setAttribute("id", "inputAgentComment" + agentNum);                                    
+            newButton.setAttribute("id", "buttonAgent" + agentNum);
+            newButton.append("Add your comment");          
+
+            // Add the form to the agentDiv
+            newDiv.append(allComments);
+            newDiv.append(newInputComment);
+            newDiv.append(newButton);
+
+            // Button add comment for each Agent
+            let currentAgent = agentNum;             
+            $('#buttonAgent' + currentAgent).click(event => {
+                if (newInputComment.value != "") {
+                    let commentText = document.createElement("text");
+                    let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
+                    commentText.setAttribute("id", "comment" + currentAgent + commentID);                
+                    $("#allComments" + currentAgent).prepend(commentText);
+                    $('#comment' + currentAgent + commentID).append(newInputComment.value);
+                    newInputComment.value = "";
+                }
+                            
+            });                      
         }
+        agentNum = 0;        
     }
 
     // Function to add weapon object as a div
     function addWeapon(response) {
-        for (let agentNum = 0; agentNum < response.data.length; agentNum++){
+        for (weaponNum; weaponNum < response.data.length; weaponNum++){
             // Create new div
             let newDiv = document.createElement("div");
             
             // Create object
-            let agent = {
-                name: response.data[agentNum].displayName,
-                icon: response.data[agentNum].displayIcon,
-                description: response.data[agentNum].description,
-                id: agentNum,
+            let weapon = {
+                name: response.data[weaponNum].displayName,
+                icon: response.data[weaponNum].displayIcon,
+                description: response.data[weaponNum].description,
+                id: weaponNum,
             }
 
             // Create img element & set src from agent.icon (image url)
-            let agentIcon = document.createElement("img");
-            agentIcon.setAttribute("src", agent.icon);
+            let weaponIcon = document.createElement("img");
+            weaponIcon.setAttribute("src", weapon.icon);
             
             // Inside the new created div, append all valAgent informations
             let newTitle = document.createElement("text");
             newTitle.setAttribute("class", "weaponTitle");
-            newTitle.append(agent.name);
+            newTitle.append(weapon.name);
             newDiv.append(newTitle);
-            newDiv.append(agentIcon);
+            newDiv.append(weaponIcon);
     
             // Set class & unique id for the new created div
             newDiv.setAttribute("class", "DivWeapon");
-            newDiv.setAttribute("id", "Div" + agentNum);
+            newDiv.setAttribute("id", "Div" + weaponNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                        
         }
+        weaponNum = 0;
     }
 
     // Function to add map object as a div
     function addMap(response) {
-        for (let agentNum = 0; agentNum < response.data.length; agentNum++){
+        for (mapNum; mapNum < response.data.length; mapNum++){
             // Create new div
             let newDiv = document.createElement("div");
             
             // Create object
-            let agent = {
-                name: response.data[agentNum].displayName,
-                icon: response.data[agentNum].displayIcon,
-                description: response.data[agentNum].description,
-                id: agentNum,
+            let map = {
+                name: response.data[mapNum].displayName,
+                icon: response.data[mapNum].displayIcon,
+                description: response.data[mapNum].description,
+                id: mapNum,
             }
 
             // Create img element & set src from agent.icon (image url)
-            let agentIcon = document.createElement("img");
-            agentIcon.setAttribute("src", agent.icon);
+            let mapIcon = document.createElement("img");
+            mapIcon.setAttribute("src", map.icon);
             
             // Inside the new created div, append all valAgent informations
             let newTitle = document.createElement("text");
-            newTitle.setAttribute("class", "agentTitle");
-            newTitle.append(agent.name);
+            newTitle.setAttribute("class", "mapTitle");
+            newTitle.append(map.name);
             newDiv.append(newTitle);           
-            newDiv.append(agentIcon);
+            newDiv.append(mapIcon);
     
             // Set class & unique id for the new created div
             newDiv.setAttribute("class", "DivMap");
-            newDiv.setAttribute("id", "Div" + agentNum);
+            newDiv.setAttribute("id", "Div" + mapNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                               
         }
+        mapNum = 0;
     }
 
     // Set the request parameters (Can change the API url)
@@ -180,7 +220,7 @@ $(document).ready(function(){
             (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
         )
     });
-
+       
     // DropDownMenu    
     document.getElementById("dropDownMenu").style.visibility = "hidden";
     let isDropDownMenuEnable = false;
@@ -194,9 +234,10 @@ $(document).ready(function(){
             isDropDownMenuEnable = false;
         }        
     });
+
     // Click on Home
     $('#home').click(function() {
-        window.location.replace('index.html');
+        window.location.replace('index.html');        
     });
 
     // Click on Gallery
@@ -567,5 +608,4 @@ $(document).ready(function(){
     };
 
     window.requestAnimationFrame(loop);
-
 }); 
