@@ -267,7 +267,7 @@ $(document).ready(function(){
     valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
     onPageLoad();
-    /*
+    
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -608,5 +608,4 @@ $(document).ready(function(){
     };
 
     window.requestAnimationFrame(loop);
-*/
 }); 
