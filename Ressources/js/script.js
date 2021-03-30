@@ -70,12 +70,12 @@ $(document).ready(function(){
             // Create html balises            
             let allComments = document.createElement("div");            
             let newInputComment = document.createElement("input");            
-            let newButton = document.createElement("button");                      
+            let newButton = document.createElement("button");                                  
 
             // Set attributes            
             allComments.setAttribute("id", "allComments" + agentNum);
-            newInputComment.setAttribute("id", "inputAgentComment" + agentNum);
-            allComments.setAttribute("class", "comments");            
+            allComments.setAttribute("class", "comments");
+            newInputComment.setAttribute("id", "inputAgentComment" + agentNum);                                    
             newButton.setAttribute("id", "buttonAgent" + agentNum);            
 
             // Add the form to the agentDiv
@@ -85,8 +85,12 @@ $(document).ready(function(){
 
             // Button add comment for each Agent
             let currentAgent = agentNum;             
-            $('#buttonAgent' + currentAgent).click(event => {                    
-                $("#allComments" + currentAgent).append(newInputComment.value);            
+            $('#buttonAgent' + currentAgent).click(event => {
+                let commentText = document.createElement("text");
+                let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
+                commentText.setAttribute("id", "comment" + currentAgent + commentID);                
+                $("#allComments" + currentAgent).append(commentText);
+                $('#comment' + currentAgent + commentID).append(newInputComment.value);            
             });                      
         }
         agentNum = 0;

@@ -240,9 +240,19 @@ button:hover {
     margin: 0 auto;
 }
 
-.comments text {
+.comments {
     display: flex;
     flex-direction: column;
+}
+
+.comments text {
+    margin: auto;
+    margin-right: 0;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: rgba(83, 58, 58, 0.6);
+    overflow-wrap: break-word;
+    border-radius: 10px;
 }
 
 footer {
