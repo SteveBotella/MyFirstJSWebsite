@@ -240,6 +240,11 @@ button:hover {
     margin: 0 auto;
 }
 
+.comments text {
+    display: flex;
+    flex-direction: column;
+}
+
 footer {
     display: flex;
     flex-direction: column;

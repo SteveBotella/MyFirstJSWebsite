@@ -67,25 +67,31 @@ $(document).ready(function(){
             $("#valAPI").append(newDiv);
             
             // Add all Comments & a form to add a Comments            
-            // Create html balises
+            // Create html balises            
             let allComments = document.createElement("div");            
-            let newForm = document.createElement("form");            
-            let newInput = document.createElement("input");            
-            let newSubmitButton = document.createElement("button");            
+            let newDivComment = document.createElement("div");            
+            let newButton = document.createElement("button");
+            let comment = document.createElement("text");                      
 
-            // Set attributes
+            // Set attributes            
             allComments.setAttribute("id", "allComments" + agentNum);
-            newForm.setAttribute("id", "formAgent" + agentNum);
-            newInput.setAttribute("id", "inputAgent" + agentNum);
-            newSubmitButton.setAttribute("id", "buttonAgent" + agentNum);
+            newDivComment.setAttribute("id", "divAgentComment" + agentNum);
+            allComments.setAttribute("class", "comments");            
+            newButton.setAttribute("id", "buttonAgent" + agentNum);            
 
             // Add the form to the agentDiv
             newDiv.append(allComments);
-            newDiv.append(newForm);
-            newForm.append(newInput);
-            newForm.append(newSubmitButton);            
+            newDiv.append(newDivComment);
+            newDiv.append(newButton);
+
+            // Button add comment for each Agent
+            let currentAgent = agentNum;             
+            $('#buttonAgent' + currentAgent).click(event => {                    
+                $("#allComments" + currentAgent).append("test");            
+            });                      
         }
         agentNum = 0;
+        commentsCount = 0;        
     }
 
     // Function to add weapon object as a div
@@ -207,20 +213,7 @@ $(document).ready(function(){
             (error) =>  alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error))
         )
     });
-/*
-    // Button add comment for each Agent    
-    $('#buttonAgent0').click(event => {                   
-        // Create html balises
-        let agentComment = document.createElement("div");            
-                    
-        // Set attributes
-        agentComment.setAttribute("id", "agentComment");
-        
-        // Add the div to the agent allComments
-        let allComments = document.querySelector("#allComments0");
-        allComments.prepend(agentComment);
-    });
-*/    
+       
     // DropDownMenu    
     document.getElementById("dropDownMenu").style.visibility = "hidden";
     let isDropDownMenuEnable = false;
@@ -237,7 +230,7 @@ $(document).ready(function(){
 
     // Click on Home
     $('#home').click(function() {
-        window.location.replace('index.html');
+        window.location.replace('index.html');        
     });
 
     // Click on Gallery
@@ -267,7 +260,7 @@ $(document).ready(function(){
     valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
     onPageLoad();
-
+    /*
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -608,5 +601,5 @@ $(document).ready(function(){
     };
 
     window.requestAnimationFrame(loop);
-
+*/
 }); 
