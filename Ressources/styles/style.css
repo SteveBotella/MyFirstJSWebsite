@@ -63,7 +63,8 @@ video {
     height: auto;
     background-color: rgba(0, 0, 0, 0.6);
     border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;    
+    border-bottom-right-radius: 8px;
+    z-index: 3;    
 }
 
 button {
@@ -79,6 +80,7 @@ button {
     font-family: 'Changa', sans-serif;
     -webkit-text-stroke: 0.5px white;
     border-bottom: 5px solid transparent;
+    z-index: 4;
 }
 
 button a:link {
