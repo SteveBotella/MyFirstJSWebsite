@@ -196,17 +196,17 @@ $(document).ready(function(){
     });
     // Click on Home
     $('#home').click(function() {
-        window.location.replace('https://eager-mclean-a32b39.netlify.app/index.html');
+        window.location.replace('index.html');
     });
 
     // Click on Gallery
     $('#gallery').click(function() {
-        window.location.replace('https://eager-mclean-a32b39.netlify.app/gallery.html');
+        window.location.replace('gallery.html');
     });
 
     // Click on Game
     $('#game').click(function() {
-        window.location.replace('https://eager-mclean-a32b39.netlify.app/game.html');
+        window.location.replace('game.html');
     });
     
 
