@@ -245,6 +245,11 @@ button:hover {
     flex-direction: column;
 }
 
+input {
+    display: flex;
+    margin-top: 10px;
+}
+
 .comments text {
     margin: auto;
     margin-right: 0;

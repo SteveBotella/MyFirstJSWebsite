@@ -76,7 +76,8 @@ $(document).ready(function(){
             allComments.setAttribute("id", "allComments" + agentNum);
             allComments.setAttribute("class", "comments");
             newInputComment.setAttribute("id", "inputAgentComment" + agentNum);                                    
-            newButton.setAttribute("id", "buttonAgent" + agentNum);            
+            newButton.setAttribute("id", "buttonAgent" + agentNum);
+            newButton.append("Add your comment");          
 
             // Add the form to the agentDiv
             newDiv.append(allComments);
@@ -86,15 +87,18 @@ $(document).ready(function(){
             // Button add comment for each Agent
             let currentAgent = agentNum;             
             $('#buttonAgent' + currentAgent).click(event => {
-                let commentText = document.createElement("text");
-                let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
-                commentText.setAttribute("id", "comment" + currentAgent + commentID);                
-                $("#allComments" + currentAgent).append(commentText);
-                $('#comment' + currentAgent + commentID).append(newInputComment.value);            
+                if (newInputComment.value != "") {
+                    let commentText = document.createElement("text");
+                    let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
+                    commentText.setAttribute("id", "comment" + currentAgent + commentID);                
+                    $("#allComments" + currentAgent).append(commentText);
+                    $('#comment' + currentAgent + commentID).append(newInputComment.value);
+                    newInputComment.value = "";
+                }
+                            
             });                      
         }
-        agentNum = 0;
-        commentsCount = 0;        
+        agentNum = 0;        
     }
 
     // Function to add weapon object as a div
