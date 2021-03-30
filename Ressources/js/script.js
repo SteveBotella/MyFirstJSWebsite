@@ -38,8 +38,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -77,8 +76,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -112,8 +110,7 @@ $(document).ready(function(){
                 description: response.data[agentNum].description,
                 id: agentNum,
             }
-    
-            console.log(agent);
+
             // Create img element & set src from agent.icon (image url)
             let agentIcon = document.createElement("img");
             agentIcon.setAttribute("src", agent.icon);
@@ -184,16 +181,24 @@ $(document).ready(function(){
         )
     });
 
-    // Mouse hovering riotLogo
-    let riotLogo = document.getElementById("riotLogo");
-    riotLogo.onmouseover = function() {
-        riotLogo.src = "Ressources/images/riotLogo.png";                     
-    }
+    // DropDownMenu    
+    document.getElementById("dropDownMenu").style.visibility = "hidden";
+    let isDropDownMenuEnable = false;
 
-    // Mouse stop hovering
-    riotLogo.onmouseout = function() {
-        riotLogo.src = "Ressources/images/riotFistLogo.png";    
-    }
+    $('#riotLogo').click(function() {
+        if (isDropDownMenuEnable == false) {
+            document.getElementById("dropDownMenu").style.visibility = "visible";
+            isDropDownMenuEnable = true;
+        } else {
+            document.getElementById("dropDownMenu").style.visibility = "hidden";
+            isDropDownMenuEnable = false;
+        }        
+    });
+
+    // Mouse hovering valorantLogo
+    let riotLogo = document.getElementById("riotLogo");
+    riotLogo.onmouseover = function() {riotLogo.src = "Ressources/images/riotLogo.png";}
+    riotLogo.onmouseout = function() {riotLogo.src = "Ressources/images/riotFistLogo.png";}
         
     // Click on valorantLogo
     $('#valorantLogo').click(function() {
@@ -234,7 +239,7 @@ $(document).ready(function(){
     // Add image as playerCharacter
     let characterViper = new Image();
     characterViper.src = "Ressources/images/characterViper.png";  
-    
+
     // Add image as playerCharacter2
     let characterJett = new Image();
     characterJett.src = "Ressources/images/characterJettFlip.png";
@@ -243,7 +248,7 @@ $(document).ready(function(){
     background.onload = function(){
         context.drawImage(background, 0, 0);   
     }
-    
+
     characterViper.onload = function(){
         context.drawImage(characterViper, 200, 200);   
     }
@@ -255,7 +260,7 @@ $(document).ready(function(){
     characterBubble.onload = function(){
         context.drawImage(characterBubble, 200, 200);
     } 
-    
+
     characterBubble2.onload = function(){
         context.drawImage(characterBubble2, 200, 200);
     } 
@@ -405,7 +410,7 @@ $(document).ready(function(){
             playerCharacter.y = 400 - 16 - 32;
             playerCharacter.y_velocity = 0;
         }
-        
+
         // If playerCharacter is going off the left screen
         if (playerCharacter.x < - 32) {
             playerCharacter.x = - 32;            
@@ -427,14 +432,14 @@ $(document).ready(function(){
             playerCharacter2.y = 400 - 16 - 32;
             playerCharacter2.y_velocity = 0;
         }
-        
+
         // If playerCharacter is going off the left screen
         if (playerCharacter2.x < - 32) {
             playerCharacter2.x = - 32;            
         } else if (playerCharacter2.x > 1000) { // If playerCharacter is going off the right screen
             playerCharacter2.x = 1000;
         }
-        
+
         // Waiting all player answers
         if (playerCharacter.choice == true && playerCharacter2.choice == true && isInputEnable == false && isInputEnable2 == false) {            
             characterBubble.src = playerCharacter.answer;
@@ -456,7 +461,7 @@ $(document).ready(function(){
 
         console.log(isInputEnable);
         console.log(isInputEnable2);
-                
+
         context.fillRect(0, 0, 1080, 600);// x, y, width, height
         context.drawImage(background, 0, 0);        
         context.drawImage(characterViper, playerCharacter.x, playerCharacter.y);
@@ -515,7 +520,7 @@ $(document).ready(function(){
         else if (e.code === "Numpad8") controller2.spectre = false
         else if (e.code === "Numpad9") controller2.knife = false
     });
-    
+
     // Find fight winner
     function fight() {
         if (playerCharacter.answer === playerCharacter2.answer) {
@@ -548,4 +553,4 @@ $(document).ready(function(){
 
     window.requestAnimationFrame(loop);
 
-});
+}); 

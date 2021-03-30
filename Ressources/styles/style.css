@@ -9,21 +9,25 @@ body {
 
 #headerVideo {
     height: auto;
+    width: auto;
 }
 
 video {
     z-index: 0;
+    height: auto;
+    width: 100%; /*
     min-width: 100%;
-    min-height: 100%;
-    background-size: 100% auto;
+    min-height: 100%; */
+    background-size: 100% auto;    
 }
 
 #navBar {
-    position: relative;
+    position: fixed;
     display: flex;
     background-color: rgba(0, 0, 0, 0.90);
     height: 80px;
-    width: auto;
+    width: 100%;
+    z-index: 2;
 }
 
 #riotLogo {
@@ -49,6 +53,42 @@ video {
     width: 50px;
     border-radius: 60px;
     background-color: rgba(0, 0, 0, 0.1);    
+}
+
+#dropDownMenu {
+    display: flex;
+    position: fixed;
+    margin-top: 80px;
+    flex-direction: column;
+    min-width: 200px;
+    width: 200px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;    
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 8px;
+    margin-top: 1px;
+    min-height: 40px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+    border-bottom: 5px solid transparent;
+}
+
+button a:link {
+    color: white;
+}
+
+button:hover {
+    border-bottom: 3px solid red;
 }
 
 .fotorama {
