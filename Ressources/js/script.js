@@ -59,7 +59,21 @@ $(document).ready(function(){
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                                   
+            $("#valAPI").append(newDiv);
+            
+            // Add all Comments & a form to add a Comments
+            // Create html balises & set attributes
+            let newForm = document.createElement("form");
+            newForm.setAttribute("id", "formAgent" + agentNum);
+            let newInput = document.createElement("input");
+            newInput.setAttribute("id", "input" + agentNum);
+            let newSubmitButton = document.createElement("button");
+            newSubmitButton.setAttribute("id", "button" + agentNum);
+
+            // Add the form to the agentDiv
+            newDiv.append(newForm);
+            newForm.append(newInput);
+            newForm.append(newSubmitButton);
         }
     }
 
@@ -93,7 +107,7 @@ $(document).ready(function(){
             newDiv.setAttribute("id", "Div" + agentNum);
     
             // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                                   
+            $("#valAPI").append(newDiv);                        
         }
     }
 
