@@ -348,6 +348,7 @@ $(document).ready(function(){
             let image = document.createElement("img");
             image.setAttribute("src", galleryImages[galleryIndex]);
             image.setAttribute("class", "galleryImage");
+            image.setAttribute("id", "galleryImage" + galleryIndex);
             if (isGalleryColumn == true) {
                 $("#galleryIMGColumn").append(image);
             } else {
