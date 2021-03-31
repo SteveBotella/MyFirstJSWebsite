@@ -243,16 +243,16 @@ $(document).ready(function(){
         );
     }
 
-    // Clear the api div
-    function clearChildren() {
-        let remove = document.getElementById('valAPI');
+    // Clear the div you want
+    function clearChildren(id) {
+        let remove = document.getElementById(id);
         remove.innerHTML = '';   
     }
     
     // --- EVENTS ---
     // Button display Agents
     $('#displayAgents').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/agents",
             'GET', 
@@ -263,7 +263,7 @@ $(document).ready(function(){
 
     // Button display Weapons
     $('#displayWeapons').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/weapons",
             'GET', 
@@ -274,7 +274,7 @@ $(document).ready(function(){
 
     // Button display Maps
     $('#displayMaps').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/maps",
             'GET', 
@@ -343,8 +343,9 @@ $(document).ready(function(){
     ];
 
     // Add all images (from array) to the div
-    for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
-        let image = document.createElement("img");
+    function addGallery() {
+        for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
+            let image = document.createElement("img");
             image.setAttribute("src", galleryImages[galleryIndex]);
             image.setAttribute("class", "galleryImage");
             if (isGalleryColumn == true) {
@@ -352,7 +353,26 @@ $(document).ready(function(){
             } else {
                 $("#galleryIMGRow").append(image);
             }                       
-    }; 
+        }
+    };
+    
+    addGallery();    
+    
+    // Button display gallery row
+    $('#rowGallery').click(event => {
+        clearChildren('galleryIMGColumn');
+        clearChildren('galleryIMGRow');
+        isGalleryColumn = false;
+        addGallery();
+    });
+
+    // Button display gallery column
+    $('#columnGallery').click(event => {
+        clearChildren('galleryIMGColumn');
+        clearChildren('galleryIMGRow');
+        isGalleryColumn = true;
+        addGallery();
+    });
         
     // --- GAME ---
     let context, controller, playerCharacter, loop;

@@ -264,6 +264,16 @@ input {
     margin-top: 10px;
 }
 
+#buttonsGallerySelect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonsGallerySelect button {
+    margin: 5px;
+}
+
 #galleryIMGColumn {
     display: flex;
     flex-direction: column;    
