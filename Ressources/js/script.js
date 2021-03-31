@@ -328,11 +328,26 @@ $(document).ready(function(){
     valorantLogo.onmouseover = function() {valorantLogo.src = "Ressources/images/valorantLogoRed.png";}
     valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
-    onPageLoad();
+    //onPageLoad();
 
     // --- GALLERY ---
-    
+    // Create an array of all images we want
+    let galleryImages = 
+    [   "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
+        "https://i.ytimg.com/vi/VHXo9hAgeas/mqdefault.jpg",
+        "https://i.ytimg.com/vi/YQu4B_igZkU/maxresdefault.jpg",
+        "https://lh3.googleusercontent.com/proxy/rWaxvt4r4tynRdSUqmdx6wA7jhtYdiJH7AC5QNLseciGA6v14VGaRbCwf4gXgbzCuvThgoD_ImX6Fd4lEuoa3jPA427NkN1EuR3C8GeJwEGOcLd8zBRhXX5QvSEr68UwSkPYW12TijCUYIk2O0U",
+        "https://cmcdistribution.com.vn/en/wp-content/uploads/2021/02/FUNNIEST-MOMENTS-IN-VALORANT-2.jpg",
+        "https://i.ytimg.com/vi/wEzW2kudO9g/maxresdefault.jpg"
+    ];
 
+    // Add all images (from array) to the div
+    for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
+        let image = document.createElement("img");
+            image.setAttribute("src", galleryImages[galleryIndex]);        
+        $("#galleryIMG").append(image);        
+    };
+        
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 

@@ -264,9 +264,24 @@ input {
     margin-top: 10px;
 }
 
+#galleryIMG {
+    display: flex;
+    flex-direction: column;    
+    height: auto;    
+}
+
+#galleryIMG img {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: auto;
+    width: 800px;
+}
+
 footer {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     height: 500px;
     width: auto;
     background-color: rgba(0, 0, 0, 0.9);
