@@ -279,7 +279,8 @@ input {
 }
 
 #buttonsGallerySelect button {
-    margin: 5px;        
+    margin: 5px;
+    width: 100px;        
 }
 
 #galleryIMGColumn {
@@ -314,6 +315,8 @@ input {
 #plusInput {
     margin: auto;
     margin-right: 0;
+    min-width: 10%;
+    min-height: 20px;
 }
 
 footer {
