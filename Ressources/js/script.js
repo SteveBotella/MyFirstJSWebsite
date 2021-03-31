@@ -373,6 +373,17 @@ $(document).ready(function(){
         isGalleryColumn = true;
         addGallery();
     });
+
+    // Input url for the desire image add to list
+    $('#plusGallery').click(event => {
+        let newInputImage = document.getElementById("plusInput");
+        if (newInputImage.value != "") {
+            galleryImages.push(newInputImage.value);
+            clearChildren('galleryIMGColumn');
+            clearChildren('galleryIMGRow');
+            addGallery();
+        }        
+    });
         
     // --- GAME ---
     let context, controller, playerCharacter, loop;
