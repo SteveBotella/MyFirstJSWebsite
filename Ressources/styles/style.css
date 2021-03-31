@@ -7,9 +7,15 @@ body {
     background-size: cover;
 }
 
+header {
+    margin-bottom: 0px;
+}
+
 #headerVideo {
     height: auto;
     width: auto;
+    margin-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.90);
 }
 
 video {
@@ -154,7 +160,7 @@ button:hover {
 
 #valAPI {    
     margin: 0 auto;    
-    width: 1000px; 
+    width: 60%; 
 }
 
 .DivAgent {
@@ -268,10 +274,12 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 80px;
 }
 
 #buttonsGallerySelect button {
-    margin: 5px;
+    margin: 5px;        
 }
 
 #galleryIMGColumn {
@@ -301,6 +309,11 @@ input {
     margin-bottom: 0;
     height: 300px;
     width: auto;
+}
+
+#plusInput {
+    margin: auto;
+    margin-right: 0;
 }
 
 footer {
@@ -334,5 +347,7 @@ footer {
 /* GAME */
 canvas {
     display: flex;
-    margin: auto;  
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;  
 }

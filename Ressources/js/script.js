@@ -337,7 +337,7 @@ $(document).ready(function(){
     [   "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
         "https://i.ytimg.com/vi/VHXo9hAgeas/mqdefault.jpg",
         "https://i.ytimg.com/vi/YQu4B_igZkU/maxresdefault.jpg",
-        "https://lh3.googleusercontent.com/proxy/rWaxvt4r4tynRdSUqmdx6wA7jhtYdiJH7AC5QNLseciGA6v14VGaRbCwf4gXgbzCuvThgoD_ImX6Fd4lEuoa3jPA427NkN1EuR3C8GeJwEGOcLd8zBRhXX5QvSEr68UwSkPYW12TijCUYIk2O0U",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0_g7-9UH8Sc9jihFXiuY1SEu_a_ykS1afBA&usqp=CAU",
         "https://cmcdistribution.com.vn/en/wp-content/uploads/2021/02/FUNNIEST-MOMENTS-IN-VALORANT-2.jpg",
         "https://i.ytimg.com/vi/wEzW2kudO9g/maxresdefault.jpg"
     ];
@@ -355,7 +355,7 @@ $(document).ready(function(){
             }                       
         }
     };
-    
+
     addGallery();    
     
     // Button display gallery row
