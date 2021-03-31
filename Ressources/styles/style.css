@@ -264,9 +264,49 @@ input {
     margin-top: 10px;
 }
 
+#buttonsGallerySelect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonsGallerySelect button {
+    margin: 5px;
+}
+
+#galleryIMGColumn {
+    display: flex;
+    flex-direction: column;    
+    height: auto;    
+}
+
+#galleryIMGColumn img {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: auto;
+    width: 50%;
+}
+
+#galleryIMGRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;    
+    height: auto;    
+}
+
+#galleryIMGRow img {
+    margin: 10px;
+    margin-bottom: 0;
+    height: 300px;
+    width: auto;
+}
+
 footer {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     height: 500px;
     width: auto;
     background-color: rgba(0, 0, 0, 0.9);

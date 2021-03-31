@@ -243,16 +243,16 @@ $(document).ready(function(){
         );
     }
 
-    // Clear the api div
-    function clearChildren() {
-        let remove = document.getElementById('valAPI');
+    // Clear the div you want
+    function clearChildren(id) {
+        let remove = document.getElementById(id);
         remove.innerHTML = '';   
     }
     
     // --- EVENTS ---
     // Button display Agents
     $('#displayAgents').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/agents",
             'GET', 
@@ -263,7 +263,7 @@ $(document).ready(function(){
 
     // Button display Weapons
     $('#displayWeapons').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/weapons",
             'GET', 
@@ -274,7 +274,7 @@ $(document).ready(function(){
 
     // Button display Maps
     $('#displayMaps').click(event => {
-        clearChildren();
+        clearChildren('valAPI');
         requestApi(
             "https://valorant-api.com/v1/maps",
             'GET', 
@@ -330,6 +330,50 @@ $(document).ready(function(){
 
     onPageLoad();
 
+    // --- GALLERY ---
+    // Create an array of all images we want
+    let isGalleryColumn = false;
+    let galleryImages = 
+    [   "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
+        "https://i.ytimg.com/vi/VHXo9hAgeas/mqdefault.jpg",
+        "https://i.ytimg.com/vi/YQu4B_igZkU/maxresdefault.jpg",
+        "https://lh3.googleusercontent.com/proxy/rWaxvt4r4tynRdSUqmdx6wA7jhtYdiJH7AC5QNLseciGA6v14VGaRbCwf4gXgbzCuvThgoD_ImX6Fd4lEuoa3jPA427NkN1EuR3C8GeJwEGOcLd8zBRhXX5QvSEr68UwSkPYW12TijCUYIk2O0U",
+        "https://cmcdistribution.com.vn/en/wp-content/uploads/2021/02/FUNNIEST-MOMENTS-IN-VALORANT-2.jpg",
+        "https://i.ytimg.com/vi/wEzW2kudO9g/maxresdefault.jpg"
+    ];
+
+    // Add all images (from array) to the div
+    function addGallery() {
+        for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
+            let image = document.createElement("img");
+            image.setAttribute("src", galleryImages[galleryIndex]);
+            image.setAttribute("class", "galleryImage");
+            if (isGalleryColumn == true) {
+                $("#galleryIMGColumn").append(image);
+            } else {
+                $("#galleryIMGRow").append(image);
+            }                       
+        }
+    };
+    
+    addGallery();    
+    
+    // Button display gallery row
+    $('#rowGallery').click(event => {
+        clearChildren('galleryIMGColumn');
+        clearChildren('galleryIMGRow');
+        isGalleryColumn = false;
+        addGallery();
+    });
+
+    // Button display gallery column
+    $('#columnGallery').click(event => {
+        clearChildren('galleryIMGColumn');
+        clearChildren('galleryIMGRow');
+        isGalleryColumn = true;
+        addGallery();
+    });
+        
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
