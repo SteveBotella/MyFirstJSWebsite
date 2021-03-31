@@ -264,18 +264,33 @@ input {
     margin-top: 10px;
 }
 
-#galleryIMG {
+#galleryIMGColumn {
     display: flex;
     flex-direction: column;    
     height: auto;    
 }
 
-#galleryIMG img {
+#galleryIMGColumn img {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0;
     height: auto;
-    width: 800px;
+    width: 50%;
+}
+
+#galleryIMGRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;    
+    height: auto;    
+}
+
+#galleryIMGRow img {
+    margin: 10px;
+    margin-bottom: 0;
+    height: 300px;
+    width: auto;
 }
 
 footer {

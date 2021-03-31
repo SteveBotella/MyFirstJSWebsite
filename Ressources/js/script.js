@@ -328,10 +328,11 @@ $(document).ready(function(){
     valorantLogo.onmouseover = function() {valorantLogo.src = "Ressources/images/valorantLogoRed.png";}
     valorantLogo.onmouseout = function() {valorantLogo.src = "Ressources/images/valorantLogo.png";}
 
-    //onPageLoad();
+    onPageLoad();
 
     // --- GALLERY ---
     // Create an array of all images we want
+    let isGalleryColumn = false;
     let galleryImages = 
     [   "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
         "https://i.ytimg.com/vi/VHXo9hAgeas/mqdefault.jpg",
@@ -344,9 +345,14 @@ $(document).ready(function(){
     // Add all images (from array) to the div
     for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
         let image = document.createElement("img");
-            image.setAttribute("src", galleryImages[galleryIndex]);        
-        $("#galleryIMG").append(image);        
-    };
+            image.setAttribute("src", galleryImages[galleryIndex]);
+            image.setAttribute("class", "galleryImage");
+            if (isGalleryColumn == true) {
+                $("#galleryIMGColumn").append(image);
+            } else {
+                $("#galleryIMGRow").append(image);
+            }                       
+    }; 
         
     // --- GAME ---
     let context, controller, playerCharacter, loop;
