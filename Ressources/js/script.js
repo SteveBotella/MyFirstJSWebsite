@@ -330,6 +330,9 @@ $(document).ready(function(){
 
     onPageLoad();
 
+    // --- GALLERY ---
+    
+
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
