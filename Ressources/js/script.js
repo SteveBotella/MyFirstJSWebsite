@@ -1,6 +1,7 @@
 // Run only when document ready
 $(document).ready(function(){
     // Feed
+    // Variable for each API link
     let agentNum = 0;
     let weaponNum = 0;
     let mapNum = 0;
@@ -84,7 +85,7 @@ $(document).ready(function(){
             newDiv.append(newInputComment);
             newDiv.append(newButton);
 
-            // Button add comment for each Agent
+            // Button add comment for each agent
             let currentAgent = agentNum;             
             $('#buttonAgent' + currentAgent).click(event => {
                 if (newInputComment.value != "") {
@@ -94,8 +95,7 @@ $(document).ready(function(){
                     $("#allComments" + currentAgent).prepend(commentText);
                     $('#comment' + currentAgent + commentID).append(newInputComment.value);
                     newInputComment.value = "";
-                }
-                            
+                }                            
             });                      
         }
         agentNum = 0;        
@@ -115,11 +115,11 @@ $(document).ready(function(){
                 id: weaponNum,
             }
 
-            // Create img element & set src from agent.icon (image url)
+            // Create img element & set src from weapon.icon (image url)
             let weaponIcon = document.createElement("img");
             weaponIcon.setAttribute("src", weapon.icon);
             
-            // Inside the new created div, append all valAgent informations
+            // Inside the new created div, append all valWeapon informations
             let newTitle = document.createElement("text");
             newTitle.setAttribute("class", "weaponTitle");
             newTitle.append(weapon.name);
@@ -130,8 +130,39 @@ $(document).ready(function(){
             newDiv.setAttribute("class", "DivWeapon");
             newDiv.setAttribute("id", "Div" + weaponNum);
     
-            // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                        
+            // Append the new div to the parent div
+            $("#valAPI").append(newDiv);
+            
+            // Add all Comments & a form to add a Comments            
+            // Create html balises            
+            let allComments = document.createElement("div");            
+            let newInputComment = document.createElement("input");            
+            let newButton = document.createElement("button");                                  
+
+            // Set attributes            
+            allComments.setAttribute("id", "allCommentsWeapon" + weaponNum);
+            allComments.setAttribute("class", "comments");
+            newInputComment.setAttribute("id", "inputWeaponComment" + weaponNum);                                    
+            newButton.setAttribute("id", "buttonWeapon" + weaponNum);
+            newButton.append("Add your comment");          
+
+            // Add the form to the weaponDiv
+            newDiv.append(allComments);
+            newDiv.append(newInputComment);
+            newDiv.append(newButton);
+
+            // Button add comment for each Weapon
+            let currentWeapon = weaponNum;             
+            $('#buttonWeapon' + currentWeapon).click(event => {
+                if (newInputComment.value != "") {
+                    let commentText = document.createElement("text");
+                    let commentID = document.getElementById("allCommentsWeapon" + currentWeapon).childElementCount; 
+                    commentText.setAttribute("id", "commentWeapon" + currentWeapon + commentID);                
+                    $("#allCommentsWeapon" + currentWeapon).prepend(commentText);
+                    $('#commentWeapon' + currentWeapon + commentID).append(newInputComment.value);
+                    newInputComment.value = "";
+                }                            
+            });
         }
         weaponNum = 0;
     }
@@ -150,11 +181,11 @@ $(document).ready(function(){
                 id: mapNum,
             }
 
-            // Create img element & set src from agent.icon (image url)
+            // Create img element & set src from map.icon (image url)
             let mapIcon = document.createElement("img");
             mapIcon.setAttribute("src", map.icon);
             
-            // Inside the new created div, append all valAgent informations
+            // Inside the new created div, append all valMap informations
             let newTitle = document.createElement("text");
             newTitle.setAttribute("class", "mapTitle");
             newTitle.append(map.name);
@@ -165,8 +196,39 @@ $(document).ready(function(){
             newDiv.setAttribute("class", "DivMap");
             newDiv.setAttribute("id", "Div" + mapNum);
     
-            // Append the new div to the parent valAgents div
-            $("#valAPI").append(newDiv);                               
+            // Append the new div to the parent div
+            $("#valAPI").append(newDiv);
+            
+            // Add all Comments & a form to add a Comments            
+            // Create html balises            
+            let allComments = document.createElement("div");            
+            let newInputComment = document.createElement("input");            
+            let newButton = document.createElement("button");                                  
+
+            // Set attributes            
+            allComments.setAttribute("id", "allCommentsMap" + mapNum);
+            allComments.setAttribute("class", "comments");
+            newInputComment.setAttribute("id", "inputMapComment" + mapNum);                                    
+            newButton.setAttribute("id", "buttonMap" + mapNum);
+            newButton.append("Add your comment");          
+
+            // Add the form to the mapDiv
+            newDiv.append(allComments);
+            newDiv.append(newInputComment);
+            newDiv.append(newButton);
+
+            // Button add comment for each map
+            let currentMap = mapNum;             
+            $('#buttonMap' + currentMap).click(event => {
+                if (newInputComment.value != "") {
+                    let commentText = document.createElement("text");
+                    let commentID = document.getElementById("allCommentsMap" + currentMap).childElementCount; 
+                    commentText.setAttribute("id", "commentMap" + currentMap + commentID);                
+                    $("#allCommentsMap" + currentMap).prepend(commentText);
+                    $('#commentMap' + currentMap + commentID).append(newInputComment.value);
+                    newInputComment.value = "";
+                }                            
+            });
         }
         mapNum = 0;
     }
