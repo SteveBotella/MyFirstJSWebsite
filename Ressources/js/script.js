@@ -367,21 +367,29 @@ $(document).ready(function(){
                 $("#galleryImageDiv" + galleryIndex).append(image);
             }
 
-            image.onmouseover = function() {
-                $("#galleryImageDiv" + galleryIndex).append(deleteImage);
+            let hoverButtonDeleteImage = false;
+            if (hoverButtonDeleteImage == false) {
+                image.onmouseover = function() {
+                    $("#galleryImageDiv" + galleryIndex).append(deleteImage);
+                }
+            }
+            
+            deleteImage.onmouseout = function() {
+                hoverButtonDeleteImage = true;
+                deleteImage.remove();
             }
             image.onmouseout = function() {
+                hoverButtonDeleteImage = false;
                 deleteImage.remove();
             }
             
-            $("#deleteImage" + galleryIndex).click(event => {
+            deleteImage.onclick = function() {
                 clearChildren('galleryIMGColumn');
                 clearChildren('galleryIMGRow');
-                galleryImages.
-                image.remove();
+                galleryImages.splice(galleryIndex, 1);
                 addGallery();
-            });
-        }
+            };
+        };
     };
 
     addGallery();    
@@ -412,7 +420,7 @@ $(document).ready(function(){
             addGallery();
         }        
     });
-        
+    /*    
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -752,5 +760,5 @@ $(document).ready(function(){
         }
     };
 
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);*/
 }); 
