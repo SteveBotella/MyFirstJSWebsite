@@ -372,7 +372,15 @@ $(document).ready(function(){
             }
             image.onmouseout = function() {
                 deleteImage.remove();
-            }                       
+            }
+            
+            $("#deleteImage" + galleryIndex).click(event => {
+                clearChildren('galleryIMGColumn');
+                clearChildren('galleryIMGRow');
+                galleryImages.
+                image.remove();
+                addGallery();
+            });
         }
     };
 
