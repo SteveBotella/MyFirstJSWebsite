@@ -345,14 +345,33 @@ $(document).ready(function(){
     // Add all images (from array) to the div
     function addGallery() {
         for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
+            let divImage = document.createElement("div");
             let image = document.createElement("img");
+            let deleteImage = document.createElement("button");
+
             image.setAttribute("src", galleryImages[galleryIndex]);
             image.setAttribute("class", "galleryImage");
             image.setAttribute("id", "galleryImage" + galleryIndex);
+            
+            divImage.setAttribute("class", "galleryImageDiv");
+            divImage.setAttribute("id", "galleryImageDiv" + galleryIndex);
+
+            deleteImage.setAttribute("id", "deleteImage" + galleryIndex);
+            deleteImage.setAttribute("class", "deleteImage");            
+
             if (isGalleryColumn == true) {
-                $("#galleryIMGColumn").append(image);
+                $("#galleryIMGColumn").append(divImage);
+                $("#galleryImageDiv" + galleryIndex).append(image);
             } else {
-                $("#galleryIMGRow").append(image);
+                $("#galleryIMGRow").append(divImage);
+                $("#galleryImageDiv" + galleryIndex).append(image);
+            }
+
+            image.onmouseover = function() {
+                $("#galleryImageDiv" + galleryIndex).append(deleteImage);
+            }
+            image.onmouseout = function() {
+                deleteImage.remove();
             }                       
         }
     };
