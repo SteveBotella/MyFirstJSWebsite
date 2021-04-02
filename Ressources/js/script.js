@@ -89,10 +89,17 @@ $(document).ready(function(){
             let currentAgent = agentNum;             
             $('#buttonAgent' + currentAgent).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDiv" + currentAgent + commentID);
+                    commentDiv.setAttribute("class", "commentDiv");
+                    commentButton.setAttribute("id", "commentButton" + currentAgent + commentID);
                     commentText.setAttribute("id", "comment" + currentAgent + commentID);                
-                    $("#allComments" + currentAgent).prepend(commentText);
+                    $("#allComments" + currentAgent).prepend(commentDiv);
+                    $('#commentDiv' + currentAgent + commentID).append(commentText);
+                    $('#commentDiv' + currentAgent + commentID).append(commentButton);
                     $('#comment' + currentAgent + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
