@@ -102,7 +102,11 @@ $(document).ready(function(){
                     $('#commentDiv' + currentAgent + commentID).append(commentButton);
                     $('#comment' + currentAgent + commentID).append(newInputComment.value);
                     newInputComment.value = "";
-                }                            
+
+                    $('#commentButton' + currentAgent + commentID ).click(event => {
+                        commentDiv.remove();
+                    });
+                };                            
             });                      
         }
         agentNum = 0;        
@@ -175,7 +179,11 @@ $(document).ready(function(){
                     $('#commentDivWeapon' + currentWeapon + commentID).append(commentButton);
                     $('#commentWeapon' + currentWeapon + commentID).append(newInputComment.value);
                     newInputComment.value = "";
-                }                            
+
+                    $('#commentButtonWeapon' + currentWeapon + commentID ).click(event => {
+                        commentDiv.remove();
+                    });
+                };                            
             });
         }
         weaponNum = 0;
@@ -248,7 +256,11 @@ $(document).ready(function(){
                     $('#commentDivMap' + currentMap + commentID).append(commentButton);
                     $('#commentMap' + currentMap + commentID).append(newInputComment.value);
                     newInputComment.value = "";
-                }                            
+
+                    $('#commentButtonMap' + currentMap + commentID ).click(event => {
+                        commentDiv.remove();
+                    });
+                };                            
             });
         }
         mapNum = 0;
