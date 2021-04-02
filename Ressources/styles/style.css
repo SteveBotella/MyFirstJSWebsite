@@ -200,6 +200,14 @@ button:hover {
     border-width: 5px;
 }
 
+.DivAgent button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
 .DivWeapon {
     display: flex;
 	flex-direction: column;
@@ -221,6 +229,14 @@ button:hover {
 .DivWeapon img {
     height: 50%;
     width: 50%;
+}
+
+.DivWeapon button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
 }
 
 .DivMap {
@@ -245,6 +261,14 @@ button:hover {
     height: 750px;
     width: 750px;
     margin: 0 auto;
+}
+
+.DivMap button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
 }
 
 .comments {
