@@ -231,14 +231,21 @@ $(document).ready(function(){
             newDiv.append(newInputComment);
             newDiv.append(newButton);
 
-            // Button add comment for each map
+            // Button add comment for each weapon
             let currentMap = mapNum;             
             $('#buttonMap' + currentMap).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allCommentsMap" + currentMap).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDivMap" + currentMap + commentID);
+                    commentDiv.setAttribute("class", "commentDivMap");
+                    commentButton.setAttribute("id", "commentButtonMap" + currentMap + commentID);
                     commentText.setAttribute("id", "commentMap" + currentMap + commentID);                
-                    $("#allCommentsMap" + currentMap).prepend(commentText);
+                    $("#allCommentsMap" + currentMap).prepend(commentDiv);
+                    $('#commentDivMap' + currentMap + commentID).append(commentText);
+                    $('#commentDivMap' + currentMap + commentID).append(commentButton);
                     $('#commentMap' + currentMap + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
