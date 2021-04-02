@@ -492,7 +492,7 @@ $(document).ready(function(){
             addGallery();
         }        
     });
-    /*    
+       
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -554,7 +554,7 @@ $(document).ready(function(){
         walking: false,
         x: 300,
         x_velocity: 0,
-        y: 300,
+        y: -200,
         y_velocity: 0,
         life: 100,
         choice: false,
@@ -575,7 +575,7 @@ $(document).ready(function(){
         walking: false,
         x: 600,
         x_velocity: 0,
-        y: 300,
+        y: -350,
         y_velocity: 0,
         life: 100,
         choice: false,
@@ -832,5 +832,5 @@ $(document).ready(function(){
         }
     };
 
-    window.requestAnimationFrame(loop);*/
-}); 
+    window.requestAnimationFrame(loop);
+});
