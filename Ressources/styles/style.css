@@ -59,6 +59,23 @@ video {
     background-color: rgba(0, 0, 0, 0.1);    
 }
 
+button {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 8px;
+    margin-top: 1px;
+    height: 40px;
+    width: 200px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Changa', sans-serif;
+    -webkit-text-stroke: 0.5px white;
+    border-bottom: 5px solid transparent;
+    z-index: 4;
+}
+
 #dropDownMenu {
     display: flex;
     position: fixed;
@@ -71,22 +88,6 @@ video {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     z-index: 3;    
-}
-
-button {
-    background-color: rgba(0, 0, 0, 0.6);
-    border: none;
-    border-radius: 8px;
-    margin-top: 1px;
-    min-height: 40px;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: 'Changa', sans-serif;
-    -webkit-text-stroke: 0.5px white;
-    border-bottom: 5px solid transparent;
-    z-index: 4;
 }
 
 button a:link {
@@ -199,6 +200,14 @@ button:hover {
     border-width: 5px;
 }
 
+.DivAgent button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
 .DivWeapon {
     display: flex;
 	flex-direction: column;
@@ -220,6 +229,14 @@ button:hover {
 .DivWeapon img {
     height: 50%;
     width: 50%;
+}
+
+.DivWeapon button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
 }
 
 .DivMap {
@@ -244,6 +261,14 @@ button:hover {
     height: 750px;
     width: 750px;
     margin: 0 auto;
+}
+
+.DivMap button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+
 }
 
 .comments {
@@ -286,7 +311,7 @@ input {
 #galleryIMGColumn {
     display: flex;
     flex-direction: column;    
-    height: auto;    
+    height: auto; 
 }
 
 #galleryIMGColumn img {
@@ -295,6 +320,12 @@ input {
     margin-bottom: 0;
     height: auto;
     width: 50%;
+}
+
+#galleryIMGColumn img button {
+    position: absolute;
+    height: 20px;
+    width: 20px;
 }
 
 #galleryIMGRow {
@@ -310,6 +341,46 @@ input {
     margin-bottom: 0;
     height: 300px;
     width: auto;
+}
+
+.galleryImageDiv {
+    position: relative;
+}
+
+.galleryImageDivUser {
+    position: relative;
+}
+
+#galleryIMGColumn .galleryImage {
+    margin-left: 25%;
+}
+
+#galleryIMGColumn .galleryImageUser {
+    margin-left: 25%;
+}
+
+#galleryIMGColumn button {
+    margin-left: 25%;
+}
+
+.deleteImage {
+    position: absolute;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 20px;
+    width: 20px;
+    z-index: 5;
+}
+
+.deleteImageUser {
+    position: absolute;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 20px;
+    width: 20px;
+    z-index: 5;
 }
 
 #plusInput {

@@ -334,7 +334,10 @@ $(document).ready(function(){
     // Create an array of all images we want
     let isGalleryColumn = false;
     let galleryImages = 
-    [   "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
+    [   
+    ];
+    let galleryImagesUser = [
+        "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/08/Valorant-team-dies-before-round-starts.jpg?q=50&fit=crop&w=960&h=500",
         "https://i.ytimg.com/vi/VHXo9hAgeas/mqdefault.jpg",
         "https://i.ytimg.com/vi/YQu4B_igZkU/maxresdefault.jpg",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0_g7-9UH8Sc9jihFXiuY1SEu_a_ykS1afBA&usqp=CAU",
@@ -345,16 +348,99 @@ $(document).ready(function(){
     // Add all images (from array) to the div
     function addGallery() {
         for (let galleryIndex = 0; galleryIndex < galleryImages.length; galleryIndex++){
+            let divImage = document.createElement("div");
             let image = document.createElement("img");
+            let deleteImage = document.createElement("button");
+
             image.setAttribute("src", galleryImages[galleryIndex]);
             image.setAttribute("class", "galleryImage");
             image.setAttribute("id", "galleryImage" + galleryIndex);
+            
+            divImage.setAttribute("class", "galleryImageDiv");
+            divImage.setAttribute("id", "galleryImageDiv" + galleryIndex);
+
+            deleteImage.setAttribute("id", "deleteImage" + galleryIndex);
+            deleteImage.setAttribute("class", "deleteImage");            
+
             if (isGalleryColumn == true) {
-                $("#galleryIMGColumn").append(image);
+                $("#galleryIMGColumn").append(divImage);
+                $("#galleryImageDiv" + galleryIndex).append(image);
             } else {
-                $("#galleryIMGRow").append(image);
-            }                       
-        }
+                $("#galleryIMGRow").append(divImage);
+                $("#galleryImageDiv" + galleryIndex).append(image);
+            }
+            
+            let hoverButtonDeleteImage = false;
+            if (hoverButtonDeleteImage == false) {
+                image.onmouseover = function() {
+                    $("#galleryImageDiv" + galleryIndex).append(deleteImage);
+                }
+            }
+            
+            deleteImage.onmouseout = function() {
+                hoverButtonDeleteImage = true;
+                deleteImage.remove();
+            }
+            image.onmouseout = function() {
+                hoverButtonDeleteImage = false;
+                deleteImage.remove();
+            }
+            
+            deleteImage.onclick = function() {
+                clearChildren('galleryIMGColumn');
+                clearChildren('galleryIMGRow');
+                galleryImages.splice(galleryIndex, 1);
+                addGallery();
+            };
+        };
+        galleryIndex = 0;
+        
+        for (galleryIndex; galleryIndex < galleryImagesUser.length; galleryIndex++){
+            let divImageUser = document.createElement("div");
+            let imageUser = document.createElement("img");
+            let deleteImageUser = document.createElement("button");
+
+            imageUser.setAttribute("src", galleryImagesUser[galleryIndex]);
+            imageUser.setAttribute("class", "galleryImageUser");
+            imageUser.setAttribute("id", "galleryImageUser" + galleryIndex);
+            
+            divImageUser.setAttribute("class", "galleryImageDivUser");
+            divImageUser.setAttribute("id", "galleryImageDivUser" + galleryIndex);
+
+            deleteImageUser.setAttribute("id", "deleteImageUser" + galleryIndex);
+            deleteImageUser.setAttribute("class", "deleteImageUser");            
+
+            if (isGalleryColumn == true) {
+                $("#galleryIMGColumn").append(divImageUser);
+                $("#galleryImageDivUser" + galleryIndex).append(imageUser);
+            } else {
+                $("#galleryIMGRow").append(divImageUser);
+                $("#galleryImageDivUser" + galleryIndex).append(imageUser);
+            }
+
+            let hoverButtonDeleteImageUser = false;
+            if (hoverButtonDeleteImageUser == false) {
+                imageUser.onmouseover = function() {
+                    $("#galleryImageDivUser" + galleryIndex).append(deleteImageUser);
+                }
+            }
+            
+            deleteImageUser.onmouseout = function() {
+                hoverButtonDeleteImageUser = true;
+                deleteImageUser.remove();
+            }
+            imageUser.onmouseout = function() {
+                hoverButtonDeleteImageUser = false;
+                deleteImageUser.remove();
+            }
+            
+            deleteImageUser.onclick = function() {
+                clearChildren('galleryIMGColumn');
+                clearChildren('galleryIMGRow');
+                galleryImagesUser.splice(galleryIndex, 1);
+                addGallery();
+            };
+        };
     };
 
     addGallery();    
@@ -385,7 +471,7 @@ $(document).ready(function(){
             addGallery();
         }        
     });
-        
+    /*    
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -725,5 +811,5 @@ $(document).ready(function(){
         }
     };
 
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);*/
 }); 
