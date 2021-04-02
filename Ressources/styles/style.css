@@ -312,6 +312,28 @@ button:hover {
     height: 20px;
 }
 
+.commentDivWeapon {
+    margin: auto;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    background-color: rgba(41, 41, 41, 0.6);
+    overflow-wrap: break-word;
+    border-radius: 10px;
+    max-width: 95%;
+}
+
+.commentDivWeapon button {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+}
+
 input {
     display: flex;
     margin-top: 10px;

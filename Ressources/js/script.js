@@ -158,14 +158,21 @@ $(document).ready(function(){
             newDiv.append(newInputComment);
             newDiv.append(newButton);
 
-            // Button add comment for each Weapon
+            // Button add comment for each weapon
             let currentWeapon = weaponNum;             
             $('#buttonWeapon' + currentWeapon).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allCommentsWeapon" + currentWeapon).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDivWeapon" + currentWeapon + commentID);
+                    commentDiv.setAttribute("class", "commentDivWeapon");
+                    commentButton.setAttribute("id", "commentButtonWeapon" + currentWeapon + commentID);
                     commentText.setAttribute("id", "commentWeapon" + currentWeapon + commentID);                
-                    $("#allCommentsWeapon" + currentWeapon).prepend(commentText);
+                    $("#allCommentsWeapon" + currentWeapon).prepend(commentDiv);
+                    $('#commentDivWeapon' + currentWeapon + commentID).append(commentText);
+                    $('#commentDivWeapon' + currentWeapon + commentID).append(commentButton);
                     $('#commentWeapon' + currentWeapon + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
