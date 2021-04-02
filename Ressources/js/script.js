@@ -89,10 +89,17 @@ $(document).ready(function(){
             let currentAgent = agentNum;             
             $('#buttonAgent' + currentAgent).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allComments" + currentAgent).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDiv" + currentAgent + commentID);
+                    commentDiv.setAttribute("class", "commentDiv");
+                    commentButton.setAttribute("id", "commentButton" + currentAgent + commentID);
                     commentText.setAttribute("id", "comment" + currentAgent + commentID);                
-                    $("#allComments" + currentAgent).prepend(commentText);
+                    $("#allComments" + currentAgent).prepend(commentDiv);
+                    $('#commentDiv' + currentAgent + commentID).append(commentText);
+                    $('#commentDiv' + currentAgent + commentID).append(commentButton);
                     $('#comment' + currentAgent + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
@@ -151,14 +158,21 @@ $(document).ready(function(){
             newDiv.append(newInputComment);
             newDiv.append(newButton);
 
-            // Button add comment for each Weapon
+            // Button add comment for each weapon
             let currentWeapon = weaponNum;             
             $('#buttonWeapon' + currentWeapon).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allCommentsWeapon" + currentWeapon).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDivWeapon" + currentWeapon + commentID);
+                    commentDiv.setAttribute("class", "commentDivWeapon");
+                    commentButton.setAttribute("id", "commentButtonWeapon" + currentWeapon + commentID);
                     commentText.setAttribute("id", "commentWeapon" + currentWeapon + commentID);                
-                    $("#allCommentsWeapon" + currentWeapon).prepend(commentText);
+                    $("#allCommentsWeapon" + currentWeapon).prepend(commentDiv);
+                    $('#commentDivWeapon' + currentWeapon + commentID).append(commentText);
+                    $('#commentDivWeapon' + currentWeapon + commentID).append(commentButton);
                     $('#commentWeapon' + currentWeapon + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
@@ -221,10 +235,17 @@ $(document).ready(function(){
             let currentMap = mapNum;             
             $('#buttonMap' + currentMap).click(event => {
                 if (newInputComment.value != "") {
+                    let commentDiv = document.createElement("div");
                     let commentText = document.createElement("text");
+                    let commentButton = document.createElement("button");                    
                     let commentID = document.getElementById("allCommentsMap" + currentMap).childElementCount; 
+                    commentDiv.setAttribute("id", "commentDivMap" + currentMap + commentID);
+                    commentDiv.setAttribute("class", "commentDivMap");
+                    commentButton.setAttribute("id", "commentButtonMap" + currentMap + commentID);
                     commentText.setAttribute("id", "commentMap" + currentMap + commentID);                
-                    $("#allCommentsMap" + currentMap).prepend(commentText);
+                    $("#allCommentsMap" + currentMap).prepend(commentDiv);
+                    $('#commentDivMap' + currentMap + commentID).append(commentText);
+                    $('#commentDivMap' + currentMap + commentID).append(commentButton);
                     $('#commentMap' + currentMap + commentID).append(newInputComment.value);
                     newInputComment.value = "";
                 }                            
@@ -471,7 +492,7 @@ $(document).ready(function(){
             addGallery();
         }        
     });
-    /*    
+       
     // --- GAME ---
     let context, controller, playerCharacter, loop;
 
@@ -533,7 +554,7 @@ $(document).ready(function(){
         walking: false,
         x: 300,
         x_velocity: 0,
-        y: 300,
+        y: -200,
         y_velocity: 0,
         life: 100,
         choice: false,
@@ -554,7 +575,7 @@ $(document).ready(function(){
         walking: false,
         x: 600,
         x_velocity: 0,
-        y: 300,
+        y: -350,
         y_velocity: 0,
         life: 100,
         choice: false,
@@ -811,5 +832,5 @@ $(document).ready(function(){
         }
     };
 
-    window.requestAnimationFrame(loop);*/
-}); 
+    window.requestAnimationFrame(loop);
+});
