@@ -231,7 +231,7 @@ $(document).ready(function(){
             newDiv.append(newInputComment);
             newDiv.append(newButton);
 
-            // Button add comment for each weapon
+            // Button add comment for each map
             let currentMap = mapNum;             
             $('#buttonMap' + currentMap).click(event => {
                 if (newInputComment.value != "") {
